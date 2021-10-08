@@ -8,6 +8,7 @@ public class CharacterFSM : MonoBehaviour
 
     State curState;
     GameController c;
+    public Animator playerAnimator;
 
     private Dictionary<Type, State> states;
 
@@ -28,6 +29,7 @@ public class CharacterFSM : MonoBehaviour
     private void Update()
     {
         curState.Loop();
+        playerAnimator.SetBool("isWalking", Input.GetAxis("Horizontal") != 0);
     }
 
     void ChangeState(Type stateType)
