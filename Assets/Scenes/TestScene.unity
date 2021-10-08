@@ -425,10 +425,10 @@ GameObject:
   - component: {fileID: 1764765871}
   - component: {fileID: 1764765870}
   - component: {fileID: 1764765869}
-  - component: {fileID: 1764765872}
   - component: {fileID: 1764765868}
+  - component: {fileID: 1764765872}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Acro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -532,8 +532,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &1764765872
-CapsuleCollider2D:
+--- !u!60 &1764765872
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -546,5 +546,20 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.0003662, y: 1}
+    newSize: {x: 1.0003662, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.10473633, y: 0.36157322}
+      - {x: -0.18530273, y: 0.24878025}
+      - {x: -0.18530273, y: -0.18627834}
+      - {x: -0.16918945, y: -0.25073147}
+      - {x: 0.16918945, y: -0.25073147}
+      - {x: 0.16918945, y: 0.36157322}
