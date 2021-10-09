@@ -29,7 +29,7 @@ public class CharacterFSM : MonoBehaviour
     private void Update()
     {
         curState.Loop();
-        playerAnimator.SetBool("isWalking", Input.GetAxis("Horizontal") != 0);
+        
     }
 
     void ChangeState(Type stateType)

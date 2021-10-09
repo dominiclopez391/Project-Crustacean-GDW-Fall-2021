@@ -19,7 +19,11 @@ public abstract class State : MonoBehaviour
 
     public abstract void Begin();
 
-    public virtual void Loop() { } //can be empty, which is why it's virtual with empty
+    public virtual void Loop() { 
+    
+
+    
+    } //can be empty, which is why it's virtual with empty
 
     public abstract void End();
 

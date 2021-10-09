@@ -14,7 +14,7 @@ public class KeyboardInput : MonoBehaviour
 
     private void Update()
     {
-        c.horizontal(Input.GetAxis("Horizontal"));
+        c.horizontal(Input.GetAxisRaw("Horizontal"));
     }
 
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +13,7 @@ using UnityEngine;
  * Used a modified version of the answer to this question:
  * https://answers.unity.com/questions/501893/calculating-2d-camera-bounds.html
  * The answer above is on a known area, but this game isn't, so the min and max boundries are defined dynamically with 2 corner objects
- */
+ 
 
 public class CameraScript : MonoBehaviour
 {
@@ -37,4 +37,4 @@ public class CameraScript : MonoBehaviour
             , Mathf.Clamp(focusObject.transform.position.y, leftBottomObject.transform.position.y + vertExtent, rightTopObject.transform.position.y - vertExtent), -10);
 
     }
-}
+}*/

@@ -23,11 +23,23 @@ public class MoveState : State
 
     public void PlayerMovement(float vel)
     {
-        rb.velocity = new Vector2(vel * 10, -2);
+        rb.velocity = new Vector2(vel * 4, -2);
+        fsm.playerAnimator.SetBool("isWalking", vel != 0);
+
+        if(vel < 0)
+        {
+            this.transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+        else if(vel > 0)
+        {
+            this.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     public override void Loop()
     {
+
         //todo: if c.jump switch to jumpstate
     }
 
