@@ -166,8 +166,6 @@ MonoBehaviour:
   focusObject: {fileID: 1764765867}
   leftBottomObject: {fileID: 1383040341}
   rightTopObject: {fileID: 1820350462}
-  vertExtent: 0
-  horzExtent: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
