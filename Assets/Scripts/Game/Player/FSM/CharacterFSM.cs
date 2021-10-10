@@ -8,21 +8,37 @@ public class CharacterFSM : MonoBehaviour
 
     State curState;
     GameController c;
-    public Animator playerAnimator;
+
+    Rigidbody2D rb;
+    Animator anim;
+
+    Player_Animator animator;
+    Player_Movement movement;
 
     private Dictionary<Type, State> states;
 
     void Start()
     {
+        
         c = GameController.mainController;
         states = new Dictionary<Type, State>();
 
-        //state initialization
-        states.Add(typeof(MoveState), gameObject.AddComponent<MoveState>().Initialize(this, c));
+        //object reference initialization
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
 
+        //custom controller initialization
+        movement = gameObject.AddComponent<Player_Movement>().Initialize(rb);
+        animator = gameObject.AddComponent<Player_Animator>().Initialize(anim);
+
+        //state initialization
+        states.Add(typeof(IdleState), gameObject.AddComponent<IdleState>().Initialize(this, c));
+        states.Add(typeof(JumpState), gameObject.AddComponent<JumpState>().Initialize(this, c, movement, animator));
+        states.Add(typeof(WalkState), gameObject.AddComponent<WalkState>().Initialize(this, c, movement, animator));
+        
 
         //entry state
-        ChangeState(typeof(MoveState));
+        ChangeState(typeof(IdleState));
 
     }
 
@@ -32,7 +48,7 @@ public class CharacterFSM : MonoBehaviour
         
     }
 
-    void ChangeState(Type stateType)
+    public void ChangeState(Type stateType)
     {
         if(curState != null)
         {

@@ -14,7 +14,17 @@ public class KeyboardInput : MonoBehaviour
 
     private void Update()
     {
-        c.horizontal(Input.GetAxisRaw("Horizontal"));
+
+        if(c.horizontal != null)
+        {
+            c.horizontal(Input.GetAxisRaw("Horizontal"));
+        }
+
+        if(c.jump != null)
+        {
+            c.jump(Input.GetKeyDown(KeyCode.Space));
+        }
+        
     }
 
 }
