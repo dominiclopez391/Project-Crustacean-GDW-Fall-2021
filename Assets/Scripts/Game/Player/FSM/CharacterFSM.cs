@@ -6,12 +6,15 @@ using UnityEngine;
 public class CharacterFSM : MonoBehaviour
 {
 
+    //state machine stuff
     State curState;
     GameController c;
 
+    //unity objs
     Rigidbody2D rb;
     Animator anim;
 
+    //custom controllers
     Player_Animator animator;
     Player_Movement movement;
 
