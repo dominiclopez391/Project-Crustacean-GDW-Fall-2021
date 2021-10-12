@@ -8,11 +8,11 @@ public class CharacterSettingsAcro : CharacterSettings
     {
         Character c;
 
-        c.WALKING_ACCELERATION = 8f;
-        c.GRAVITY_ACCELERATION = 14f;
-        c.WALK_MAX_SPEED = 4f;
+        c.WALKING_ACCELERATION = 25f;
+        c.GRAVITY_ACCELERATION = 9f;
+        c.WALK_MAX_SPEED = 2.4f;
         c.COYOTE_JUMP_TIME = 0.1f;
-        c.JUMP_VEL = 6f; //jump height
+        c.JUMP_VEL = 4.9f; //jump height
         c.JUMP_STALL = 0.65f;
 
         return c;
