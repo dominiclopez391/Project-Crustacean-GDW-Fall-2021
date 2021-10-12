@@ -11,19 +11,15 @@ public class Player_Movement : MonoBehaviour
     Rigidbody2D rb;
     public float velX, velY;
 
-    public float WALKING_ACCELERATION = 8f;
-    public float GRAVITY_ACCELERATION = 14f;
-
-    public float COYOTE_JUMP_TIME = 0.1f;
-
-    public float JUMP_VEL = 6f; //jump height
-    public float JUMP_STALL = 0.65f;
-
     private float CoyoteJumpTime = -10f;
     private bool grounded = true;
+    private bool accel = true;
 
-    public Player_Movement Initialize(Rigidbody2D rb)
+    Character c;
+
+    public Player_Movement Initialize(Rigidbody2D rb, Character c)
     {
+        this.c = c;
         this.rb = rb;
         return this;
     }
@@ -32,8 +28,13 @@ public class Player_Movement : MonoBehaviour
     {
         if(velY > -20f)
         {
-            velY -= GRAVITY_ACCELERATION * Time.deltaTime;
+            velY -= c.GRAVITY_ACCELERATION * Time.deltaTime;
         }
+    }
+
+    public void SetAccel(bool accel)
+    {
+        this.accel = accel;
     }
 
     public void UpdateWalk(float vel)
@@ -44,15 +45,32 @@ public class Player_Movement : MonoBehaviour
             velX = 0;
         }
 
-        else if (vel > 0 && velX < vel * 4)
+        else if (vel > 0 && velX < c.WALK_MAX_SPEED)
         {
             if (velX < 0) velX = 0; //stop on a dime when turning
-            velX += vel * WALKING_ACCELERATION * Time.deltaTime;
+
+            if(accel)
+            {
+                velX += vel * c.WALKING_ACCELERATION * Time.deltaTime;
+            }
+            else
+            {
+                velX = c.WALK_MAX_SPEED;
+            }
         }
-        else if (vel < 0 && velX > vel * 4)
+        else if (vel < 0 && velX > -1* c.WALK_MAX_SPEED)
         {
             if (velX > 0) velX = 0;
-            velX += vel * WALKING_ACCELERATION * Time.deltaTime;
+
+            if(accel)
+            {
+                velX += vel * c.WALKING_ACCELERATION * Time.deltaTime;
+            }
+            else
+            {
+                velX = -1 * c.WALK_MAX_SPEED;
+            }
+            
         }
     }
 
@@ -70,14 +88,14 @@ public class Player_Movement : MonoBehaviour
 
     public bool CanCoyoteJump()
     {
-        return CoyoteJumpTime > Time.time - COYOTE_JUMP_TIME;
+        return CoyoteJumpTime > Time.time - c.COYOTE_JUMP_TIME;
     }
 
     public void StallJump()
     {
         if(velY > 0)
         {
-            velY *= JUMP_STALL;
+            velY *= c.JUMP_STALL;
         }
     }
 
@@ -88,8 +106,6 @@ public class Player_Movement : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        //todo: only check for platforms
-        Debug.Log(collision.contacts[0].normal.normalized);
 
         if (collision.contacts[0].normal.normalized == Vector2.up)
         {
@@ -101,7 +117,7 @@ public class Player_Movement : MonoBehaviour
     public void Jump()
     {
         grounded = false;
-        velY = JUMP_VEL;
+        velY = c.JUMP_VEL;
     }
 
 }

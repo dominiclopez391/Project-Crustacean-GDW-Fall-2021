@@ -6,6 +6,8 @@ using UnityEngine;
 public class CharacterFSM : MonoBehaviour
 {
 
+    public CharacterSettings settings;
+
     //state machine stuff
     State curState;
     GameController c;
@@ -31,7 +33,7 @@ public class CharacterFSM : MonoBehaviour
         anim = GetComponent<Animator>();
 
         //custom controller initialization
-        movement = gameObject.AddComponent<Player_Movement>().Initialize(rb);
+        movement = gameObject.AddComponent<Player_Movement>().Initialize(rb, settings.GetSettingsFor());
         animator = gameObject.AddComponent<Player_Animator>().Initialize(anim);
 
         //state initialization
@@ -41,7 +43,7 @@ public class CharacterFSM : MonoBehaviour
         
 
         //entry state
-        ChangeState(typeof(IdleState));
+        ChangeState<IdleState>();
 
     }
 
@@ -51,14 +53,14 @@ public class CharacterFSM : MonoBehaviour
         
     }
 
-    public void ChangeState(Type stateType)
+    public void ChangeState<T>()
     {
         if(curState != null)
         {
             curState.End();
         }
 
-        curState = states[stateType];
+        curState = states[typeof(T)];
         curState.Begin();
 
     }

@@ -11,6 +11,8 @@ public class JumpState : MoveState
         movement.Jump();
         c.jumpRelease += Stall;
         base.Begin();
+
+        movement.SetAccel(false);
     }
 
     public override void Loop()
@@ -21,7 +23,7 @@ public class JumpState : MoveState
 
         if(movement.CheckGrounded())
         {
-            fsm.ChangeState(typeof(WalkState));
+            fsm.ChangeState<WalkState>();
         }
     }
 

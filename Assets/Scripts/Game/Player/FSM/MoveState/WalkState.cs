@@ -13,6 +13,8 @@ public class WalkState : MoveState
         c.jump += OnPlayerJump;
         c.horizontal += animator.Walk;
         c.horizontal += movement.UpdateWalk;
+
+        movement.SetAccel(true);
         
     }
 
@@ -26,7 +28,7 @@ public class WalkState : MoveState
     {
         if(jump || movement.CanCoyoteJump())
         {
-            fsm.ChangeState(typeof(JumpState));
+            fsm.ChangeState<JumpState>();
         }
     }
 

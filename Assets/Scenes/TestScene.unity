@@ -605,6 +605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1764765871}
   - component: {fileID: 1764765870}
+  - component: {fileID: 1764765874}
   - component: {fileID: 1764765869}
   - component: {fileID: 1764765868}
   - component: {fileID: 1764765872}
@@ -635,7 +636,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 017236b19d26ee54cbf57b212e27c983, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1764765869
 MonoBehaviour:
@@ -649,6 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ecdaca83c312e646adbf7c52571d652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 1764765874}
 --- !u!212 &1764765870
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -764,6 +766,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1764765874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764765867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b034bf52e5dd23144b8af127890e26ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1820350462
 GameObject:
   m_ObjectHideFlags: 0

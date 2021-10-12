@@ -9,7 +9,6 @@ public class IdleState : State
     public override void Begin()
     {
         c.horizontal += OnPlayerMove;
-        c.jump += CoyoteJump;
     }
 
 
@@ -17,21 +16,13 @@ public class IdleState : State
     {
         if(vel != 0)
         {
-            fsm.ChangeState(typeof(WalkState));
+            fsm.ChangeState<WalkState>();
         }
     }
 
     public override void End()
     {
         c.horizontal -= OnPlayerMove;
-        c.jump -= CoyoteJump;
     }
 
-    private void CoyoteJump(bool jump)
-    {
-        if (jump)
-        {
-            movement.SetLastCoyoteJump();
-        }
-    }
 }
