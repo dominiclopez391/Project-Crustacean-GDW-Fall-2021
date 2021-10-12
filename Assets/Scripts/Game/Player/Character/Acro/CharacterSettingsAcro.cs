@@ -13,7 +13,7 @@ public class CharacterSettingsAcro : CharacterSettings
         c.WALK_MAX_SPEED = 2.4f;
         c.COYOTE_JUMP_TIME = 0.1f;
         c.JUMP_VEL = 4.9f; //jump height
-        c.JUMP_STALL = 0.65f;
+        c.JUMP_STALL = 0.55f;
 
         return c;
     }
