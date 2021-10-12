@@ -45,7 +45,7 @@ public class CharacterFSM : MonoBehaviour
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         curState.Loop();
         
