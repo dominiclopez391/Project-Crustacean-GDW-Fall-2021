@@ -9,11 +9,18 @@ public class Player_Movement : MonoBehaviour
 {
 
     Rigidbody2D rb;
-    public float velY;
+    public float velX, velY;
 
-    public float GRAVITY_ACCELERATION = 10f;
-    public float JUMP_VEL = 3f;
-    public bool grounded = true;
+    public float WALKING_ACCELERATION = 8f;
+    public float GRAVITY_ACCELERATION = 14f;
+
+    public float COYOTE_JUMP_TIME = 0.1f;
+
+    public float JUMP_VEL = 6f; //jump height
+    public float JUMP_STALL = 0.65f;
+
+    private float CoyoteJumpTime = -10f;
+    private bool grounded = true;
 
     public Player_Movement Initialize(Rigidbody2D rb)
     {
@@ -29,13 +36,50 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
-    public void Walk(float vel)
+    public void UpdateWalk(float vel)
     {
-        rb.velocity = new Vector2(vel * 4, velY);
+
+        if(vel == 0)
+        {
+            velX = 0;
+        }
+
+        else if (vel > 0 && velX < vel * 4)
+        {
+            if (velX < 0) velX = 0; //stop on a dime when turning
+            velX += vel * WALKING_ACCELERATION * Time.deltaTime;
+        }
+        else if (vel < 0 && velX > vel * 4)
+        {
+            if (velX > 0) velX = 0;
+            velX += vel * WALKING_ACCELERATION * Time.deltaTime;
+        }
+    }
+
+    public void Walk()
+    {
+
+        rb.velocity = new Vector2(velX, velY);
 
     }
 
+    public void SetLastCoyoteJump()
+    {
+        CoyoteJumpTime = Time.time;
+    }
 
+    public bool CanCoyoteJump()
+    {
+        return CoyoteJumpTime > Time.time - COYOTE_JUMP_TIME;
+    }
+
+    public void StallJump()
+    {
+        if(velY > 0)
+        {
+            velY *= JUMP_STALL;
+        }
+    }
 
     public bool CheckGrounded()
     {
@@ -57,7 +101,7 @@ public class Player_Movement : MonoBehaviour
     public void Jump()
     {
         grounded = false;
-        velY = 3f;
+        velY = JUMP_VEL;
     }
 
 }

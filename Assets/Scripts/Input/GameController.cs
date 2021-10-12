@@ -11,7 +11,9 @@ public class GameController : MonoBehaviour
     public MovementInput horizontal;
 
     public delegate void KeyInput(bool toggled);
+
     public KeyInput jump;
+    public KeyInput jumpRelease;
 
     void Awake()
     {

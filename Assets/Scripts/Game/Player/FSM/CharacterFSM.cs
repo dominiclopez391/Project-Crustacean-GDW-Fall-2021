@@ -35,7 +35,7 @@ public class CharacterFSM : MonoBehaviour
         animator = gameObject.AddComponent<Player_Animator>().Initialize(anim);
 
         //state initialization
-        states.Add(typeof(IdleState), gameObject.AddComponent<IdleState>().Initialize(this, c));
+        states.Add(typeof(IdleState), gameObject.AddComponent<IdleState>().Initialize(this, c, movement, animator));
         states.Add(typeof(JumpState), gameObject.AddComponent<JumpState>().Initialize(this, c, movement, animator));
         states.Add(typeof(WalkState), gameObject.AddComponent<WalkState>().Initialize(this, c, movement, animator));
         
@@ -61,5 +61,10 @@ public class CharacterFSM : MonoBehaviour
         curState = states[stateType];
         curState.Begin();
 
+    }
+
+    public T GetState<T>() where T : class
+    {
+        return states[typeof(T)] as T;
     }
 }

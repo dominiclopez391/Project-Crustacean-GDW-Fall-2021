@@ -7,8 +7,9 @@ public class JumpState : MoveState
 
     public override void Begin()
     {
-        c.horizontal += movement.Walk;
+        c.horizontal += movement.UpdateWalk;
         movement.Jump();
+        c.jumpRelease += Stall;
         base.Begin();
     }
 
@@ -16,6 +17,7 @@ public class JumpState : MoveState
     {
         base.Loop();
         movement.UpdateGravity();
+        movement.Walk();
 
         if(movement.CheckGrounded())
         {
@@ -23,9 +25,18 @@ public class JumpState : MoveState
         }
     }
 
+    public void Stall(bool release)
+    {
+        if(release)
+        {
+            movement.StallJump();
+        }
+    }
+
     public override void End()
     {
-        c.horizontal -= movement.Walk;
+        c.horizontal -= movement.UpdateWalk;
+        c.jumpRelease -= Stall;
         base.End();
     }
 

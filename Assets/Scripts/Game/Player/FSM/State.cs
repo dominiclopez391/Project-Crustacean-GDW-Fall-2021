@@ -7,11 +7,17 @@ public abstract class State : MonoBehaviour
 
     protected CharacterFSM fsm;
     protected GameController c;
+    protected Player_Animator animator;
+    protected Player_Movement movement;
 
-    public virtual State Initialize(CharacterFSM fsm, GameController controller)
+    public virtual State Initialize(CharacterFSM fsm, GameController controller, Player_Movement movement, Player_Animator animator)
     {
+
         this.fsm = fsm;
         this.c = controller;
+
+        this.movement = movement;
+        this.animator = animator;
 
         return this;
 
