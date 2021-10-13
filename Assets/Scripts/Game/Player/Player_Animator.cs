@@ -23,6 +23,11 @@ public class Player_Animator : MonoBehaviour
         anim.SetBool("isWalking", vel != 0);
     }
 
+    public void Jump(bool jump)
+    {
+        anim.SetBool("isInAir", jump);
+    }
+
     public void handleMirroring(float vel)
     {
         if (vel < 0)
