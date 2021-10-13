@@ -14,6 +14,7 @@ public class FallState : MoveState
         c.vertical += movement.FastFall;
         movement.SetBufferJump();
         c.jump += Jump;
+        animator.Fall(true);
     }
 
     public override void Loop()
@@ -26,7 +27,7 @@ public class FallState : MoveState
         if(movement.GetGrounded())
         {
             fsm.ChangeState<WalkState>();
-            animator.Jump(false);
+            animator.Fall(false);
         }
 
         
