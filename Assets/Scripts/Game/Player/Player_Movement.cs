@@ -12,8 +12,12 @@ public class Player_Movement : MonoBehaviour
     public float velX, velY;
 
     private float CoyoteJumpTime = -10f;
+    private float BufferJumpTime = -10f;
+
     private bool grounded = true;
     private bool accel = true;
+    private bool hitHead = true;
+
 
     Character c;
 
@@ -26,7 +30,7 @@ public class Player_Movement : MonoBehaviour
 
     public void UpdateGravity()
     {
-        if(velY > -20f)
+        if(velY > c.MAX_FALL_SPEED)
         {
             velY -= c.GRAVITY_ACCELERATION * Time.deltaTime;
         }
@@ -91,6 +95,14 @@ public class Player_Movement : MonoBehaviour
         return CoyoteJumpTime > Time.time - c.COYOTE_JUMP_TIME;
     }
 
+    public void FastFall(float vert)
+    {
+        if(vert < 0)
+        {
+            velY = c.MAX_FALL_SPEED;
+        }
+    }
+
     public void StallJump()
     {
         if(velY > 0)
@@ -99,17 +111,60 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
-    public bool CheckGrounded()
+    public bool GetGrounded()
     {
         return grounded;
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void StopRisingIfHitHead()
+    {
+        if(hitHead && velY > 0)
+        {
+            velY = 0;
+        }
+    }
+
+    public void SetBufferJump()
+    {
+        BufferJumpTime = Time.time;
+
+    }
+
+    public bool CanBufferJump()
+    {
+        if(velY < 0 && BufferJumpTime > Time.time - c.BUFFER_JUMP_TIME)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
     {
 
         if (collision.contacts[0].normal.normalized == Vector2.up)
         {
             grounded = true;
+        }
+
+        if(Vector2.Dot(collision.contacts[0].normal.normalized, Vector2.down) > 0.2f)
+        {
+            hitHead = true;
+        }
+    }
+
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.contactCount == 0)
+        {
+            //todo: specify only platform layers
+            if(!collision.otherCollider.IsTouchingLayers())
+            {
+                grounded = false;
+                hitHead = false;
+
+                BufferJumpTime = Time.time;
+            }
         }
     }
 
@@ -118,6 +173,12 @@ public class Player_Movement : MonoBehaviour
     {
         grounded = false;
         velY = c.JUMP_VEL;
+    }
+
+    public void Fall()
+    {
+        grounded = false;
+        velY = -0.1f;
     }
 
 }

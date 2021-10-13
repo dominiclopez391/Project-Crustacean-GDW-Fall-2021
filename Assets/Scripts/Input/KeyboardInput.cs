@@ -17,13 +17,19 @@ public class KeyboardInput : MonoBehaviour
     {
 
         float horz = GetPriorityBasedInput();
+        float vert = Input.GetAxisRaw("Vertical");
 
         if(c.horizontal != null)
         {
             c.horizontal(horz);
         }
 
-        if(c.jump != null)
+        if (c.vertical != null)
+        {
+            c.vertical(vert);
+        }
+
+        if (c.jump != null)
         {
             c.jump(Input.GetKeyDown(KeyCode.Space));
         }
@@ -32,6 +38,8 @@ public class KeyboardInput : MonoBehaviour
         {
             c.jumpRelease(Input.GetKeyUp(KeyCode.Space));
         }
+
+
         
     }
 

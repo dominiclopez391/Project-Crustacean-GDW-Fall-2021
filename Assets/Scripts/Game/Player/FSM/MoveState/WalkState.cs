@@ -21,7 +21,18 @@ public class WalkState : MoveState
     public override void Loop()
     {
         base.Loop();
+        movement.Fall();
         movement.Walk();
+        CheckFallOff();
+        
+    }
+
+    public void CheckFallOff()
+    {
+        if(!movement.GetGrounded())
+        {
+            fsm.ChangeState<FallState>();
+        }
     }
 
     public void OnPlayerJump(bool jump)
