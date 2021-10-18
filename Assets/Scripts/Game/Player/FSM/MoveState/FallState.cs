@@ -13,6 +13,7 @@ public class FallState : MoveState
         movement.SetAccel(false);
         c.vertical += movement.FastFall;
         movement.SetBufferJump();
+        movement.SetStallJump(true);
         c.jump += Jump;
     }
 

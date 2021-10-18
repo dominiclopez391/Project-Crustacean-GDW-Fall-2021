@@ -17,6 +17,7 @@ public class Player_Movement : MonoBehaviour
     private bool grounded = true;
     private bool accel = true;
     private bool hitHead = true;
+    private bool stall = false;
 
 
     Character c;
@@ -105,9 +106,10 @@ public class Player_Movement : MonoBehaviour
 
     public void StallJump()
     {
-        if(velY > 0)
+        if(velY > 0 && stall)
         {
             velY *= c.JUMP_STALL;
+            stall = false;
         }
     }
 
@@ -137,6 +139,11 @@ public class Player_Movement : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void SetStallJump(bool val)
+    {
+        stall = val;
     }
 
     public void OnCollisionStay2D(Collision2D collision)

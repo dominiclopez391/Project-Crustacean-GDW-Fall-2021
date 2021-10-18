@@ -15,6 +15,7 @@ public class WalkState : MoveState
         c.horizontal += movement.UpdateWalk;
 
         movement.SetAccel(true);
+        movement.SetStallJump(false);
         
     }
 

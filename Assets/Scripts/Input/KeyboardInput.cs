@@ -34,9 +34,9 @@ public class KeyboardInput : MonoBehaviour
             c.jump(Input.GetKeyDown(KeyCode.Space));
         }
 
-        if(c.jumpRelease != null && !Input.GetKeyDown(KeyCode.Space))
+        if(c.jumpRelease != null)
         {
-            c.jumpRelease(Input.GetKeyUp(KeyCode.Space));
+            c.jumpRelease(!Input.GetKey(KeyCode.Space));
         }
 
 
