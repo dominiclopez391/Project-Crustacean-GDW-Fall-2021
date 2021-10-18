@@ -13,7 +13,8 @@ public class WalkState : MoveState
         c.jump += OnPlayerJump;
         c.horizontal += animator.Walk;
         c.horizontal += movement.UpdateWalk;
-
+        c.jump += Jump;
+        movement.Fall();
         movement.SetAccel(true);
         movement.SetStallJump(false);
         
@@ -22,10 +23,17 @@ public class WalkState : MoveState
     public override void Loop()
     {
         base.Loop();
-        movement.Fall();
         movement.Walk();
         CheckFallOff();
         
+    }
+
+    public void Jump(bool jump)
+    {
+        if (jump || movement.CanBufferJump())
+        {
+            fsm.ChangeState<JumpState>();
+        }
     }
 
     public void CheckFallOff()
@@ -48,6 +56,7 @@ public class WalkState : MoveState
     {
         base.End();
         c.jump -= OnPlayerJump;
+        c.jump -= Jump;
         c.horizontal -= movement.UpdateWalk;
         c.horizontal -= animator.Walk;
     }

@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class FallState : MoveState
 {
-
+    float tUngrounded = 0f;
     public override void Begin()
     {
+        tUngrounded = Time.time;
+
         c.horizontal += movement.UpdateWalk;
         c.jumpRelease += Stall;
+        c.jump += Jump;
         base.Begin();
         movement.SetAccel(false);
         c.vertical += movement.FastFall;
-        movement.SetBufferJump();
         movement.SetStallJump(true);
-        c.jump += Jump;
         animator.Fall(true);
     }
 
@@ -25,7 +26,7 @@ public class FallState : MoveState
         movement.Walk();
         movement.StopRisingIfHitHead();
 
-        if(movement.GetGrounded())
+        if(movement.GetGrounded() && tUngrounded + 0.01f < Time.time)
         {
             fsm.ChangeState<WalkState>();
             animator.Fall(false);
@@ -36,11 +37,16 @@ public class FallState : MoveState
 
     public void Jump(bool jump)
     {
-        if (jump && movement.CanBufferJump())
+        if(jump)
         {
-            fsm.ChangeState<JumpState>();
+            movement.SetBufferJump();
         }
+        
     }
+        
+
+
+
 
     public void Stall(bool release)
     {

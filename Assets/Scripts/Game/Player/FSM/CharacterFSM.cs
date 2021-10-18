@@ -61,8 +61,8 @@ public class CharacterFSM : MonoBehaviour
             curState.End();
         }
 
+        states[typeof(T)].Begin();
         curState = states[typeof(T)];
-        curState.Begin();
 
     }
 
