@@ -9,7 +9,7 @@ public class CharacterFSM : MonoBehaviour
     public CharacterSettings settings;
 
     //state machine stuff
-    State curState;
+    public State curState;
     GameController c;
 
     //unity objs
@@ -48,7 +48,7 @@ public class CharacterFSM : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         curState.Loop();
         
@@ -56,7 +56,8 @@ public class CharacterFSM : MonoBehaviour
 
     public void ChangeState<T>()
     {
-        if(curState != null)
+        Debug.Log("Changing state to: " + typeof(T).ToString());
+        if (curState != null)
         {
             curState.End();
         }

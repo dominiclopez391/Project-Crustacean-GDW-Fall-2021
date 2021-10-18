@@ -10,7 +10,6 @@ public class WalkState : MoveState
     public override void Begin()
     {
         base.Begin();
-        c.jump += OnPlayerJump;
         c.horizontal += animator.Walk;
         c.horizontal += movement.UpdateWalk;
         c.jump += Jump;
@@ -30,7 +29,7 @@ public class WalkState : MoveState
 
     public void Jump(bool jump)
     {
-        if (jump || movement.CanBufferJump())
+        if (jump || movement.CanCoyoteJump())
         {
             fsm.ChangeState<JumpState>();
         }
@@ -44,18 +43,10 @@ public class WalkState : MoveState
         }
     }
 
-    public void OnPlayerJump(bool jump)
-    {
-        if(jump || movement.CanCoyoteJump())
-        {
-            fsm.ChangeState<JumpState>();
-        }
-    }
 
     public override void End()
     {
         base.End();
-        c.jump -= OnPlayerJump;
         c.jump -= Jump;
         c.horizontal -= movement.UpdateWalk;
         c.horizontal -= animator.Walk;

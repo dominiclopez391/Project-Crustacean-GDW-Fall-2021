@@ -9,7 +9,6 @@ public abstract class MoveState : State
     {
         
         c.horizontal += animator.handleMirroring;
-        c.jump += CoyoteJump;
         
     }
 
@@ -19,19 +18,10 @@ public abstract class MoveState : State
         //todo: if c.jump switch to jumpstate
     }
 
-    public void CoyoteJump(bool jump)
-    {
-        if(jump)
-        {
-            movement.SetLastCoyoteJump();
-        }
-        
-    }
 
     public override void End()
     {
         c.horizontal -= animator.handleMirroring;
-        c.jump -= CoyoteJump;
     }
 
     

@@ -7,16 +7,19 @@ public class FallState : MoveState
     float tUngrounded = 0f;
     public override void Begin()
     {
-        tUngrounded = Time.time;
-
+        
         c.horizontal += movement.UpdateWalk;
         c.jumpRelease += Stall;
         c.jump += Jump;
-        base.Begin();
+        
         movement.SetAccel(false);
         c.vertical += movement.FastFall;
         movement.SetStallJump(true);
+        movement.SetBufferJump();
         animator.Fall(true);
+        
+
+        base.Begin();
     }
 
     public override void Loop()
@@ -26,12 +29,13 @@ public class FallState : MoveState
         movement.Walk();
         movement.StopRisingIfHitHead();
 
-        if(movement.GetGrounded() && tUngrounded + 0.01f < Time.time)
+        
+        if(movement.GetGrounded())
         {
             fsm.ChangeState<WalkState>();
             animator.Fall(false);
         }
-
+        
         
     }
 
@@ -39,12 +43,25 @@ public class FallState : MoveState
     {
         if(jump)
         {
-            movement.SetBufferJump();
+
+            if(movement.CanBufferJump())
+            {
+                fsm.ChangeState<JumpState>();
+            }
+
+            movement.SetLastCoyoteJump();
+
         }
         
     }
         
-
+    public void JumpRelease(bool jumpRelease)
+    {
+        if(jumpRelease)
+        {
+            movement.SetLastCoyoteJump(false);
+        }
+    }
 
 
 
@@ -58,10 +75,12 @@ public class FallState : MoveState
 
     public override void End()
     {
+        
         c.horizontal -= movement.UpdateWalk;
         c.jumpRelease -= Stall;
         c.vertical -= movement.FastFall;
         c.jump -= Jump;
+        
         base.End();
     }
 

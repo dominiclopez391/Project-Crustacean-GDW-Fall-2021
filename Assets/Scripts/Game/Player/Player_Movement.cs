@@ -14,9 +14,9 @@ public class Player_Movement : MonoBehaviour
     private float CoyoteJumpTime = -10f;
     private float BufferJumpTime = -10f;
 
-    private bool grounded = true;
+    public bool grounded = true;
     private bool accel = true;
-    private bool hitHead = true;
+    private bool hitHead = false;
     private bool stall = false;
 
 
@@ -86,13 +86,22 @@ public class Player_Movement : MonoBehaviour
 
     }
 
-    public void SetLastCoyoteJump()
+    public void SetLastCoyoteJump(bool jump = true)
     {
-        CoyoteJumpTime = Time.time;
+        if (!jump)
+        {
+            CoyoteJumpTime = -10f;
+        }
+        else
+        {
+            CoyoteJumpTime = Time.time;
+        }
+        
     }
 
     public bool CanCoyoteJump()
     {
+        
         return CoyoteJumpTime > Time.time - c.COYOTE_JUMP_TIME;
     }
 
@@ -126,9 +135,17 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
-    public void SetBufferJump()
+    public void SetBufferJump(bool bufferJump = true)
     {
-        BufferJumpTime = Time.time;
+        if(!bufferJump)
+        {
+            BufferJumpTime = -10f;
+        }
+        else
+        {
+            BufferJumpTime = Time.time;
+        }
+        
 
     }
 
@@ -146,7 +163,7 @@ public class Player_Movement : MonoBehaviour
         stall = val;
     }
 
-    public void OnCollisionStay2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
 
         if (collision.contacts[0].normal.normalized == Vector2.up)
@@ -162,30 +179,24 @@ public class Player_Movement : MonoBehaviour
 
     public void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.contactCount == 0)
-        {
-            //todo: specify only platform layers
-            if(!collision.otherCollider.IsTouchingLayers())
-            {
-                grounded = false;
-                hitHead = false;
-
-                BufferJumpTime = Time.time;
-            }
-        }
+        grounded = false;
     }
 
 
     public void Jump()
     {
-        grounded = false;
         velY = c.JUMP_VEL;
+
+        grounded = false;
+        hitHead = false;
+
+        BufferJumpTime = Time.time;
     }
 
     public void Fall()
     {
-        grounded = false;
-        velY = -0.1f;
+        grounded = true;
+        velY = -0.5f;
     }
 
 }
