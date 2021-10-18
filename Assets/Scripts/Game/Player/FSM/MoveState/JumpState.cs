@@ -8,6 +8,7 @@ public class JumpState : FallState
     {
         base.Begin();
         movement.Jump();
+        animator.Jump(true);
     }
 
 
