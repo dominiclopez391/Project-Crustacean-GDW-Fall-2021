@@ -50,32 +50,77 @@ public class Player_Movement : MonoBehaviour
             velX = 0;
         }
 
-        else if (vel > 0 && velX < c.WALK_MAX_SPEED)
+        else if (vel > 0)
         {
             if (velX < 0) velX = 0; //stop on a dime when turning
 
             if(accel)
             {
-                velX += vel * c.WALKING_ACCELERATION * Time.deltaTime;
+                if(velX < c.WALK_MAX_SPEED)
+                {
+                    velX += vel * c.WALKING_ACCELERATION * Time.deltaTime;
+                }
+                else if (velX > c.WALK_MAX_SPEED)
+                {
+                    velX -= vel * c.WALKING_ACCELERATION * Time.deltaTime;
+                }
             }
             else
             {
                 velX = c.WALK_MAX_SPEED;
             }
         }
-        else if (vel < 0 && velX > -1* c.WALK_MAX_SPEED)
+        else if (vel < 0)
         {
             if (velX > 0) velX = 0;
 
             if(accel)
             {
-                velX += vel * c.WALKING_ACCELERATION * Time.deltaTime;
+
+                if (velX < -1 * c.WALK_MAX_SPEED)
+                {
+                    velX -= vel * c.WALKING_ACCELERATION * Time.deltaTime;
+                }
+                else if (velX > -1 * c.WALK_MAX_SPEED)
+                {
+                    velX += vel * c.WALKING_ACCELERATION * Time.deltaTime;
+                }
+
             }
             else
             {
                 velX = -1 * c.WALK_MAX_SPEED;
             }
             
+        }
+    }
+
+    public void UpdateFall(float vel)
+    {
+        if (vel == 0)
+        {
+            velX = 0;
+        }
+
+        else if (vel > 0)
+        {
+            if (velX < 0) velX = 0; //stop on a dime when turning
+
+            if (velX < c.WALK_MAX_SPEED)
+            {
+                velX += vel * c.WALKING_ACCELERATION * Time.deltaTime;
+            }
+        }
+        else if (vel < 0)
+        {
+            if (velX > 0) velX = 0;
+
+            if (velX > -1 * c.WALK_MAX_SPEED)
+            {
+                velX += vel * c.WALKING_ACCELERATION * Time.deltaTime;
+            }
+
+
         }
     }
 
@@ -158,9 +203,32 @@ public class Player_Movement : MonoBehaviour
         return false;
     }
 
+    public bool DashEnded(float dashTime)
+    {
+        if(Time.time > dashTime + c.DASH_DURATION)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void SetStallJump(bool val)
     {
         stall = val;
+    }
+
+    public void Dash(bool left)
+    {
+
+        if(!left)
+        {
+            velX = c.DASH_SPEED;
+        }
+        else
+        {
+            velX = -1*c.DASH_SPEED;
+        }
+
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -195,7 +263,6 @@ public class Player_Movement : MonoBehaviour
 
     public void Fall()
     {
-        grounded = true;
         velY = -0.5f;
     }
 

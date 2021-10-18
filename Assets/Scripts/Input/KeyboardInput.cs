@@ -38,6 +38,10 @@ public class KeyboardInput : MonoBehaviour
         {
             c.jumpRelease(!Input.GetKeyDown(KeyCode.Space) && !Input.GetKey(KeyCode.Space));
         }
+        if(c.dash != null)
+        {
+            c.dash(Input.GetKeyDown(KeyCode.LeftShift));
+        }
 
 
         

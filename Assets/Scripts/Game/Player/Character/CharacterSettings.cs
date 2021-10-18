@@ -15,6 +15,9 @@ public struct Character
     public float BUFFER_JUMP_TIME;
     public float JUMP_VEL; //jump height
     public float JUMP_STALL;
+
+    public float DASH_SPEED;
+    public float DASH_DURATION;
 };
 
 public abstract class CharacterSettings : MonoBehaviour

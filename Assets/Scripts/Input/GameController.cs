@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour
     public KeyInput jump;
     public KeyInput jumpRelease;
 
+    public KeyInput dash;
+
 
     void Awake()
     {

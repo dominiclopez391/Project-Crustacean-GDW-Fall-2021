@@ -13,7 +13,8 @@ public class WalkState : MoveState
         c.horizontal += animator.Walk;
         c.horizontal += movement.UpdateWalk;
         c.jump += Jump;
-        movement.Fall();
+        c.dash += Dash;
+
         movement.SetAccel(true);
         movement.SetStallJump(false);
         
@@ -25,6 +26,14 @@ public class WalkState : MoveState
         movement.Walk();
         CheckFallOff();
         
+    }
+
+    public void Dash(bool dash)
+    {
+        if(dash)
+        {
+            fsm.ChangeState<DashState>();
+        }
     }
 
     public void Jump(bool jump)
@@ -50,6 +59,7 @@ public class WalkState : MoveState
         c.jump -= Jump;
         c.horizontal -= movement.UpdateWalk;
         c.horizontal -= animator.Walk;
+        c.dash -= Dash;
     }
 
 }

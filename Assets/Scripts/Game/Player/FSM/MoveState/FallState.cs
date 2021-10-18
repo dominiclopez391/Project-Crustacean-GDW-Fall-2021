@@ -8,7 +8,7 @@ public class FallState : MoveState
     public override void Begin()
     {
         
-        c.horizontal += movement.UpdateWalk;
+        c.horizontal += movement.UpdateFall;
         c.jumpRelease += Stall;
         c.jump += Jump;
         

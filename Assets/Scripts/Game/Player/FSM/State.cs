@@ -19,7 +19,14 @@ public abstract class State : MonoBehaviour
         this.movement = movement;
         this.animator = animator;
 
+        Initialize();
+
         return this;
+
+    }
+
+    public virtual void Initialize()
+    {
 
     }
 
