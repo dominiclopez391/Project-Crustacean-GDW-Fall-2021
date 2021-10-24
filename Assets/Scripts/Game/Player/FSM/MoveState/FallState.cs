@@ -25,9 +25,8 @@ public class FallState : MoveState
     public override void Loop()
     {
         base.Loop();
-        movement.UpdateGravity();
-        movement.Walk();
-        movement.StopRisingIfHitHead();
+        DoPhysics();
+        CheckWallCling();
 
         
         if(movement.GetGrounded())
@@ -37,6 +36,21 @@ public class FallState : MoveState
         }
         
         
+    }
+
+    public void DoPhysics()
+    {
+        movement.UpdateGravity();
+        movement.ApplyMovement();
+        movement.StopRisingIfHitHead();
+    }
+
+    public void CheckWallCling()
+    {
+        if(movement.GetWallCling())
+        {
+            fsm.ChangeState<WallClingState>();
+        }
     }
 
     public void Jump(bool jump)

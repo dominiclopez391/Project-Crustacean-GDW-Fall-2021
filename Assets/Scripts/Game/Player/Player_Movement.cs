@@ -11,6 +11,8 @@ public class Player_Movement : MonoBehaviour
     Rigidbody2D rb;
     public float velX, velY;
 
+    WallCollisionType collisionType;
+
     private float CoyoteJumpTime = -10f;
     private float BufferJumpTime = -10f;
 
@@ -19,6 +21,7 @@ public class Player_Movement : MonoBehaviour
     private bool hitHead = false;
     private bool stall = false;
 
+    private bool wallCling = false;
 
     Character c;
 
@@ -97,12 +100,8 @@ public class Player_Movement : MonoBehaviour
 
     public void UpdateFall(float vel)
     {
-        if (vel == 0)
-        {
-            velX = 0;
-        }
 
-        else if (vel > 0)
+        if (vel > 0)
         {
             if (velX < 0) velX = 0; //stop on a dime when turning
 
@@ -124,7 +123,7 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
-    public void Walk()
+    public void ApplyMovement()
     {
 
         rb.velocity = new Vector2(velX, velY);
@@ -142,6 +141,11 @@ public class Player_Movement : MonoBehaviour
             CoyoteJumpTime = Time.time;
         }
         
+    }
+
+    public void Glide()
+    {
+        velY = -1 * c.GLIDE_SPEED;
     }
 
     public bool CanCoyoteJump()
@@ -170,6 +174,11 @@ public class Player_Movement : MonoBehaviour
     public bool GetGrounded()
     {
         return grounded;
+    }
+
+    public bool GetWallCling()
+    {
+        return wallCling;
     }
 
     public void StopRisingIfHitHead()
@@ -239,15 +248,39 @@ public class Player_Movement : MonoBehaviour
             grounded = true;
         }
 
+        if(collision.contacts[0].normal.normalized.y == 0) {
+
+            wallCling = true;
+
+            if(collision.contacts[0].normal.normalized == Vector2.right)
+            {
+                collisionType = WallCollisionType.leftWall;
+            }
+
+            else if(collision.contacts[0].normal.normalized == Vector2.left)
+            {
+                collisionType = WallCollisionType.rightWall;
+            }
+
+        }
+
         if(Vector2.Dot(collision.contacts[0].normal.normalized, Vector2.down) > 0.2f)
         {
             hitHead = true;
         }
     }
 
+    public WallCollisionType GetWallCollisionType()
+    {
+        return collisionType;
+    }
+
     public void OnCollisionExit2D(Collision2D collision)
     {
         grounded = false;
+        wallCling = false;
+        collisionType = WallCollisionType.None;
+
     }
 
 
@@ -266,4 +299,11 @@ public class Player_Movement : MonoBehaviour
         velY = -0.5f;
     }
 
+}
+
+public enum WallCollisionType
+{
+    leftWall,
+    rightWall,
+    None
 }

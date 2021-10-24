@@ -26,8 +26,8 @@ public class DashState : MoveState
     {
         base.Begin();
         c.jump += Jump;
-        movement.Dash(directionLeft);
-        movement.Walk();
+        
+        
         tDash = Time.time;
 
     }
@@ -44,6 +44,8 @@ public class DashState : MoveState
     {
         base.Loop();
         movement.UpdateGravity();
+        movement.Dash(directionLeft);
+        movement.ApplyMovement();
         if (movement.DashEnded(tDash))
         {
             fsm.ChangeState<WalkState>();
