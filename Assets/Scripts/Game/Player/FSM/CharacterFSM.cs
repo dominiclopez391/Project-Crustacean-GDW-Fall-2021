@@ -15,6 +15,8 @@ public class CharacterFSM : MonoBehaviour
     //unity objs
     Rigidbody2D rb;
     Animator anim;
+    public PhysicsMaterial2D fullFriction, noFriction;// material for staying still with infinite friction, or moving with no friction
+
 
     //custom controllers
     Player_Animator animator;
@@ -33,7 +35,7 @@ public class CharacterFSM : MonoBehaviour
         anim = GetComponent<Animator>();
 
         //custom controller initialization
-        movement = gameObject.AddComponent<Player_Movement>().Initialize(rb, settings.GetSettingsFor());
+        movement = gameObject.AddComponent<Player_Movement>().Initialize(rb, settings.GetSettingsFor(), fullFriction, noFriction);
         animator = gameObject.AddComponent<Player_Animator>().Initialize(anim);
 
         //state initialization
