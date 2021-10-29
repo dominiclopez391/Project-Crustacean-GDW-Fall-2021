@@ -14,6 +14,7 @@ public class FallState : MoveState
         
         movement.SetAccel(false);
         c.vertical += movement.FastFall;
+        c.horizontal += CheckWallCling;
         movement.SetStallJump(true);
         movement.SetBufferJump();
         animator.Fall(true);
@@ -26,7 +27,6 @@ public class FallState : MoveState
     {
         base.Loop();
         DoPhysics();
-        CheckWallCling();
 
         
         if(movement.GetGrounded())
@@ -45,9 +45,9 @@ public class FallState : MoveState
         movement.StopRisingIfHitHead();
     }
 
-    public void CheckWallCling()
+    public void CheckWallCling(float horz)
     {
-        if(movement.GetWallCling())
+        if(movement.GetWallCling() && horz == (movement.GetWallCollisionType() == WallCollisionType.leftWall ? -1 : 1 ))
         {
             fsm.ChangeState<WallClingState>();
         }
@@ -89,7 +89,7 @@ public class FallState : MoveState
 
     public override void End()
     {
-        
+        c.horizontal -= CheckWallCling;
         c.horizontal -= movement.UpdateWalk;
         c.jumpRelease -= Stall;
         c.vertical -= movement.FastFall;
