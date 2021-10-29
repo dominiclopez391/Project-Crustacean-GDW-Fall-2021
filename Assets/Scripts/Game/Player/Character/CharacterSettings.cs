@@ -17,6 +17,7 @@ public struct Character
     public float JUMP_STALL;
 
     public float GLIDE_SPEED;
+    public float WALL_JUMP_DURATION;
 
     public float DASH_SPEED;
     public float DASH_DURATION;

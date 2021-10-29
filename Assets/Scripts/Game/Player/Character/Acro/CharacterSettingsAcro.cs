@@ -18,7 +18,7 @@ public class CharacterSettingsAcro : CharacterSettings
         c.JUMP_STALL = 0.55f;
 
         c.GLIDE_SPEED = 0.2f;
-
+        c.WALL_JUMP_DURATION = 0.2f;
         c.DASH_SPEED = 6f;
         c.DASH_DURATION = 0.4f;
         return c;

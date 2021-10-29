@@ -89,8 +89,9 @@ public class FallState : MoveState
 
     public override void End()
     {
+        c.horizontal -= movement.UpdateFall;
         c.horizontal -= CheckWallCling;
-        c.horizontal -= movement.UpdateWalk;
+
         c.jumpRelease -= Stall;
         c.vertical -= movement.FastFall;
         c.jump -= Jump;

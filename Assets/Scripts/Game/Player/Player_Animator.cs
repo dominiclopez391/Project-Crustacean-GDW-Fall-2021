@@ -47,5 +47,17 @@ public class Player_Animator : MonoBehaviour
             this.transform.localScale = new Vector3(1, 1, 1);
         }
     }
+
+    public void handleMirroring(bool left)
+    {
+        if(left)
+        {
+            this.transform.localScale = new Vector3(-1, 1, 1);
+        } 
+        else
+        {
+            this.transform.localScale = new Vector3(1, 1, 1);
+        }
+    }
     
 }

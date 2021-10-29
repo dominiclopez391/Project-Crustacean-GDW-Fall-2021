@@ -12,6 +12,7 @@ public class WallClingState : MoveState
         base.Begin();
         wcType = movement.GetWallCollisionType();
         c.horizontal += Cling;
+        c.jump += Jump;
         movement.Glide();
     }
 
@@ -26,9 +27,18 @@ public class WallClingState : MoveState
 
     }
 
+    public void Jump(bool jump)
+    {
+        if(jump)
+        {
+            fsm.ChangeState<WallJumpState>();
+        }
+    }
+
     public override void Loop()
     {
         base.Loop();
+        movement.Glide();
         movement.ApplyMovement();
     }
 
@@ -36,6 +46,7 @@ public class WallClingState : MoveState
     {
         base.End();
         c.horizontal -= Cling;
+        c.jump -= Jump;
     }
 
 

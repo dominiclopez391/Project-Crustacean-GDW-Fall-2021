@@ -130,6 +130,11 @@ public class Player_Movement : MonoBehaviour
 
     }
 
+    public void WallJump()
+    {
+        velX = (GetWallCollisionType() == WallCollisionType.leftWall ? c.WALK_MAX_SPEED : -1*c.WALK_MAX_SPEED);
+    }
+
     public void SetLastCoyoteJump(bool jump = true)
     {
         if (!jump)
@@ -145,7 +150,15 @@ public class Player_Movement : MonoBehaviour
 
     public void Glide()
     {
-        velY = -1 * c.GLIDE_SPEED;
+        if(velY > -1*c.GLIDE_SPEED)
+        {
+            velY += -1*c.WALKING_ACCELERATION * Time.deltaTime;
+        }
+        else
+        {
+            velY = -1*c.GLIDE_SPEED;
+        }
+        
     }
 
     public bool CanCoyoteJump()
@@ -270,6 +283,26 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.contacts[0].normal.normalized.y == 0)
+        {
+
+            wallCling = true;
+
+            if (collision.contacts[0].normal.normalized == Vector2.right)
+            {
+                collisionType = WallCollisionType.leftWall;
+            }
+
+            else if (collision.contacts[0].normal.normalized == Vector2.left)
+            {
+                collisionType = WallCollisionType.rightWall;
+            }
+
+        }
+    }
+
     public WallCollisionType GetWallCollisionType()
     {
         return collisionType;
@@ -279,7 +312,6 @@ public class Player_Movement : MonoBehaviour
     {
         grounded = false;
         wallCling = false;
-        collisionType = WallCollisionType.None;
 
     }
 
