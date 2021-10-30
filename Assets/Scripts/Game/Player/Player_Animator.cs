@@ -35,6 +35,11 @@ public class Player_Animator : MonoBehaviour
         anim.SetBool("hasJumped", jump);
     }
 
+    public void Wall(bool wall)
+    {
+        anim.SetBool("isWalling", wall);
+    }
+
     public void handleMirroring(float vel)
     {
         if (vel < 0)

@@ -13,8 +13,8 @@ public class WallClingState : MoveState
         wcType = movement.GetWallCollisionType();
         c.horizontal += Cling;
         c.jump += Jump;
-        
-        
+        animator.Wall(true);
+
     }
 
     public void Cling(float horz)
@@ -60,7 +60,7 @@ public class WallClingState : MoveState
         base.End();
         c.horizontal -= Cling;
         c.jump -= Jump;
-        
+        animator.Wall(false);
     }
 
 
