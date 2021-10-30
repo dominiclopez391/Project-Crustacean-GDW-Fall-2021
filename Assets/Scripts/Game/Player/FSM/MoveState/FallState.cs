@@ -17,9 +17,10 @@ public class FallState : MoveState
         c.horizontal += CheckWallCling;
         movement.SetStallJump(true);
         movement.SetBufferJump();
+        movement.Fall();
         animator.Fall(true);
-        
 
+        tUngrounded = Time.time;
         base.Begin();
     }
 
@@ -29,7 +30,8 @@ public class FallState : MoveState
         DoPhysics();
 
         
-        if(movement.GetGrounded())
+        if(movement.GetGrounded()
+            && tUngrounded + 0.1f < Time.time)
         {
             fsm.ChangeState<WalkState>();
             animator.Fall(false);
@@ -41,7 +43,7 @@ public class FallState : MoveState
     public void DoPhysics()
     {
         movement.UpdateGravity();
-        movement.ApplyMovement();
+        movement.UpdateMidair();
         movement.StopRisingIfHitHead();
     }
 
@@ -91,7 +93,7 @@ public class FallState : MoveState
     {
         c.horizontal -= movement.UpdateFall;
         c.horizontal -= CheckWallCling;
-
+        c.horizontal -= movement.UpdateWalk;
         c.jumpRelease -= Stall;
         c.vertical -= movement.FastFall;
         c.jump -= Jump;

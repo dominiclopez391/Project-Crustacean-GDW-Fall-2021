@@ -24,20 +24,22 @@ public abstract class State : MonoBehaviour
         return this;
 
     }
-
+    //creates the state
     public virtual void Initialize()
     {
 
     }
-
+    //called when the state is activated
     public abstract void Begin();
 
+    //called every frame during activity
     public virtual void Loop() { 
     
 
     
     } //can be empty, which is why it's virtual with empty
 
+    //called when the state is inactivated
     public abstract void End();
 
 }

@@ -45,7 +45,7 @@ public class DashState : MoveState
         base.Loop();
         movement.UpdateGravity();
         movement.Dash(directionLeft);
-        movement.ApplyMovement();
+        movement.Walk();
         if (movement.DashEnded(tDash))
         {
             fsm.ChangeState<WalkState>();

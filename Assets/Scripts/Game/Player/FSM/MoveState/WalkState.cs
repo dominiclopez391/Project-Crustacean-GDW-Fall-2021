@@ -23,7 +23,7 @@ public class WalkState : MoveState
     public override void Loop()
     {
         base.Loop();
-        movement.ApplyMovement();
+        movement.Walk();
         CheckFallOff();
         
     }

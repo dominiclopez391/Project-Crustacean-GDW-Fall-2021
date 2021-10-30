@@ -9,7 +9,6 @@ public abstract class MoveState : State
     {
         
         c.horizontal += animator.handleMirroring;
-        
     }
 
 

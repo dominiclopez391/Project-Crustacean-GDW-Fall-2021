@@ -7,28 +7,40 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-
+    //Component references
     Rigidbody2D rb;
-    public float velX, velY;
 
     WallCollisionType collisionType;
 
+    //movement number references
+    public float velX, velY;
     private float CoyoteJumpTime = -10f;
     private float BufferJumpTime = -10f;
+        //Used for slope movement
+    private float maxSlopeAngle = 45f;//maximum ground slope angle, in degrees
+    private Vector2 slopeNormalPerp; // slope parallel to the ground collided with
 
+    //movement state references
     public bool grounded = true;
     private bool accel = true;
     private bool hitHead = false;
     private bool stall = false;
 
     private bool wallCling = false;
+    //movement friction references
+    private PhysicsMaterial2D fullFriction, noFriction;
+
+    //Vectors that determine if the players collision is with the ground or unwalkable walls
+    private Vector2 clockwise, counterClockwise, normal;
 
     Character c;
 
-    public Player_Movement Initialize(Rigidbody2D rb, Character c)
+    public Player_Movement Initialize(Rigidbody2D rb, Character c, PhysicsMaterial2D ff, PhysicsMaterial2D nf)
     {
         this.c = c;
         this.rb = rb;
+        fullFriction = ff;
+        noFriction = nf;
         return this;
     }
 
@@ -45,16 +57,26 @@ public class Player_Movement : MonoBehaviour
         this.accel = accel;
     }
 
+    /*
+     * Updates during player walking
+     * Player swaps between full friction material and no friction material
+     * If player is still, there is full friction
+     * Otherwise player has no friction
+     * 
+     * During movement, player accelarates up to full walking speed
+     * */
     public void UpdateWalk(float vel)
     {
 
         if(vel == 0)
         {
             velX = 0;
+            rb.sharedMaterial = fullFriction;
         }
 
         else if (vel > 0)
         {
+            rb.sharedMaterial = noFriction;
             if (velX < 0) velX = 0; //stop on a dime when turning
 
             if(accel)
@@ -65,7 +87,7 @@ public class Player_Movement : MonoBehaviour
                 }
                 else if (velX > c.WALK_MAX_SPEED)
                 {
-                    velX -= vel * c.WALKING_ACCELERATION * Time.deltaTime;
+                    velX = c.WALK_MAX_SPEED;
                 }
             }
             else
@@ -75,6 +97,7 @@ public class Player_Movement : MonoBehaviour
         }
         else if (vel < 0)
         {
+            rb.sharedMaterial = noFriction;
             if (velX > 0) velX = 0;
 
             if(accel)
@@ -82,7 +105,7 @@ public class Player_Movement : MonoBehaviour
 
                 if (velX < -1 * c.WALK_MAX_SPEED)
                 {
-                    velX -= vel * c.WALKING_ACCELERATION * Time.deltaTime;
+                    velX = -1 * c.WALK_MAX_SPEED;
                 }
                 else if (velX > -1 * c.WALK_MAX_SPEED)
                 {
@@ -98,8 +121,19 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
+    /*
+     * Update call during falling
+     * ensures player does not have friction, and
+     * allows player to move in air
+     */
     public void UpdateFall(float vel)
     {
+        rb.sharedMaterial = noFriction;
+        if (vel == 0)
+        {
+            velX = 0;
+            
+        }
 
         if (vel > 0)
         {
@@ -123,10 +157,40 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
-    public void ApplyMovement()
-    {
 
+
+    /*
+     * Determines velocity of the players movement
+     * If on ground, its parallel to ground
+     * If in air, its the actual player velocity, left or right on x-axis
+     * */
+
+    public void UpdateMidair()
+    {
         rb.velocity = new Vector2(velX, velY);
+    }
+
+    public void Walk()
+    {
+        //Debug rays of collision during walk
+        /*
+        Debug.DrawRay(this.transform.position, normal, Color.green);
+        Debug.DrawRay(this.transform.position, clockwise, Color.red);
+        Debug.DrawRay(this.transform.position, counterClockwise, Color.red);
+        */
+        Debug.DrawRay(this.transform.position, slopeNormalPerp, Color.yellow);
+        if (GetGrounded()) //if on ground, flat or sloped
+        {
+            rb.velocity = new Vector2(slopeNormalPerp.x * -velX, -0.005f);
+            
+        }
+        else  //If in air
+        {
+            UpdateMidair();
+        }
+
+        //Debug.Log(velX);
+        //rb.velocity = new Vector2(velX, velY);
 
     }
 
@@ -150,7 +214,8 @@ public class Player_Movement : MonoBehaviour
 
     public void Glide()
     {
-        if(velY > -1*c.GLIDE_SPEED)
+        rb.sharedMaterial = noFriction;
+        if (velY > -1*c.GLIDE_SPEED)
         {
             velY += -1*c.WALKING_ACCELERATION * Time.deltaTime;
         }
@@ -253,10 +318,51 @@ public class Player_Movement : MonoBehaviour
 
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
 
-        if (collision.contacts[0].normal.normalized == Vector2.up)
+    /**
+     * Checks the normal of the collision
+     * and determines if 
+     * 1) the player is on ground, (grounded = true)
+     * 2) hitting a ceiling (hitHead = true)
+     * 3) or "other"; hitting a steep slope or wall (neither)
+     * */
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.contacts[0].normal.normalized.y == 0)
+        {
+
+            wallCling = true;
+
+            if (collision.contacts[0].normal.normalized == Vector2.right)
+            {
+                collisionType = WallCollisionType.leftWall;
+            }
+
+            else if (collision.contacts[0].normal.normalized == Vector2.left)
+            {
+                collisionType = WallCollisionType.rightWall;
+            }
+
+        }
+
+
+        float radMaxAngle = Mathf.Deg2Rad * maxSlopeAngle;
+        clockwise = new Vector2(
+            Vector2.up.x * Mathf.Cos(radMaxAngle) - Vector2.up.y * Mathf.Sin(radMaxAngle),
+            Vector2.up.x * Mathf.Sin(radMaxAngle) + Vector2.up.y * Mathf.Cos(radMaxAngle)
+        );
+        counterClockwise = new Vector2(
+            Vector2.up.x * Mathf.Cos(-radMaxAngle) - Vector2.up.y * Mathf.Sin(-radMaxAngle),
+            Vector2.up.x * Mathf.Sin(-radMaxAngle) + Vector2.up.y * Mathf.Cos(-radMaxAngle)
+        );
+        normal = collision.contacts[0].normal.normalized;
+        slopeNormalPerp = Vector2.Perpendicular(normal).normalized;
+        //Debug.Log("Collision");
+
+        if (Vector3.Dot(Vector3.Cross(clockwise, normal), Vector3.Cross(clockwise, counterClockwise)) >= 0 
+            && Vector3.Dot(Vector3.Cross(counterClockwise, normal), Vector3.Cross(counterClockwise, clockwise)) >= 0)
+        //if (AxB * AxC >= 0 && CxB * CxA >= 0) //what the above line is, as an equation
+        //if (collision.contacts[0].normal.normalized == Vector2.up) //old code, only defined ground as flat
         {
             grounded = true;
         }
@@ -277,36 +383,19 @@ public class Player_Movement : MonoBehaviour
 
         }
 
-        if(Vector2.Dot(collision.contacts[0].normal.normalized, Vector2.down) > 0.2f)
+        if (Vector2.Dot(collision.contacts[0].normal.normalized, Vector2.down) > 0.2f)
         {
             hitHead = true;
         }
     }
 
-    public void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.contacts[0].normal.normalized.y == 0)
-        {
-
-            wallCling = true;
-
-            if (collision.contacts[0].normal.normalized == Vector2.right)
-            {
-                collisionType = WallCollisionType.leftWall;
-            }
-
-            else if (collision.contacts[0].normal.normalized == Vector2.left)
-            {
-                collisionType = WallCollisionType.rightWall;
-            }
-
-        }
-    }
 
     public WallCollisionType GetWallCollisionType()
     {
         return collisionType;
     }
+
+    //Exiting collision must mean player left ground, if on it
 
     public void OnCollisionExit2D(Collision2D collision)
     {
@@ -315,20 +404,19 @@ public class Player_Movement : MonoBehaviour
 
     }
 
-
     public void Jump()
     {
         velY = c.JUMP_VEL;
-
-        grounded = false;
-        hitHead = false;
-
-        BufferJumpTime = Time.time;
+        Fall();
     }
 
     public void Fall()
     {
-        velY = -0.5f;
+        BufferJumpTime = Time.time;
+        grounded = false;
+        hitHead = false;
+
+        
     }
 
 }

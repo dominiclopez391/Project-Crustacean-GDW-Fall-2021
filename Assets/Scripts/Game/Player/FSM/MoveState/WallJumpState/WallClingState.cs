@@ -13,7 +13,7 @@ public class WallClingState : MoveState
         wcType = movement.GetWallCollisionType();
         c.horizontal += Cling;
         c.jump += Jump;
-        movement.Glide();
+        
     }
 
     public void Cling(float horz)
@@ -39,7 +39,7 @@ public class WallClingState : MoveState
     {
         base.Loop();
         movement.Glide();
-        movement.ApplyMovement();
+        movement.UpdateMidair();
     }
 
     public override void End()

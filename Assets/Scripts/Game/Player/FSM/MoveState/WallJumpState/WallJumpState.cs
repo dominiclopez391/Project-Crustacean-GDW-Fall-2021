@@ -30,7 +30,7 @@ public class WallJumpState : State
         }
 
         movement.UpdateGravity();
-        movement.ApplyMovement();
+        movement.UpdateMidair();
         movement.StopRisingIfHitHead();
 
 
