@@ -215,7 +215,12 @@ public class Player_Movement : MonoBehaviour
     public void Glide()
     {
         rb.sharedMaterial = noFriction;
-        if (velY > -1*c.GLIDE_SPEED)
+        velX = 0;
+        if(velY > 0)
+        {
+            UpdateGravity();
+        }
+        else if (velY > -1*c.GLIDE_SPEED)
         {
             velY += -1*c.WALKING_ACCELERATION * Time.deltaTime;
         }

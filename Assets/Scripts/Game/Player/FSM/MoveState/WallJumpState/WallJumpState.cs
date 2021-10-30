@@ -9,13 +9,15 @@ public class WallJumpState : State
 {
 
     float tWallJump = 0f;
-    float WallJumpTime = 0.2f;
+    float WallJumpTime = 0.1f;
 
     public override void Begin()
     {
         animator.handleMirroring(movement.GetWallCollisionType() == WallCollisionType.rightWall);
         movement.WallJump();
         movement.Jump();
+        movement.SetStallJump(true);
+        c.jumpRelease += Stall;
         tWallJump = 0f;
     }
 
@@ -38,6 +40,15 @@ public class WallJumpState : State
 
     public override void End()
     {
-
+        c.jumpRelease -= Stall;
     }
+
+    public void Stall(bool release)
+    {
+        if (release)
+        {
+            movement.StallJump();
+        }
+    }
+
 }

@@ -14,16 +14,30 @@ public class WallClingState : MoveState
         c.horizontal += Cling;
         c.jump += Jump;
         
+        
     }
 
     public void Cling(float horz)
     {
-        if(horz != 0 
+        if(horz == (wcType == WallCollisionType.leftWall ? -1 : 1))
+        {
+            movement.Glide();
+
+        }
+
+        else
+        {
+            movement.UpdateGravity();
+        }
+
+
+        if (horz != 0
             && horz != (wcType == WallCollisionType.leftWall ? -1 : 1)
             || !movement.GetWallCling())
         {
             fsm.ChangeState<FallState>();
         }
+
 
     }
 
@@ -38,7 +52,6 @@ public class WallClingState : MoveState
     public override void Loop()
     {
         base.Loop();
-        movement.Glide();
         movement.UpdateMidair();
     }
 
@@ -47,7 +60,9 @@ public class WallClingState : MoveState
         base.End();
         c.horizontal -= Cling;
         c.jump -= Jump;
+        
     }
+
 
 
 
