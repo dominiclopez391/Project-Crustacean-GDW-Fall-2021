@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class WallJumpState : State
 {
-
+    bool dash = false;
     float tWallJump = 0f;
     float WallJumpTime = 0.1f;
 
@@ -15,7 +15,7 @@ public class WallJumpState : State
     {
         animator.handleMirroring(movement.GetWallCollisionType() == WallCollisionType.rightWall);
         animator.createWallJumpParticle();
-        movement.WallJump();
+        movement.WallJump(dash);
         movement.Jump();
         movement.SetStallJump(true);
         c.jumpRelease += Stall;
@@ -36,6 +36,11 @@ public class WallJumpState : State
         movement.StopRisingIfHitHead();
 
 
+    }
+
+    public void SetDash(bool dash)
+    {
+        this.dash = dash;
     }
 
     public override void End()

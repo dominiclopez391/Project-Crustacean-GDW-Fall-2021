@@ -27,7 +27,7 @@ public class CharacterFSM : MonoBehaviour
 
     void Start()
     {
-        
+
         c = GameController.mainController;
         states = new Dictionary<Type, State>();
 
@@ -45,7 +45,7 @@ public class CharacterFSM : MonoBehaviour
         states.Add(typeof(FallState), gameObject.AddComponent<FallState>().Initialize(this, c, movement, animator));
         states.Add(typeof(WalkState), gameObject.AddComponent<WalkState>().Initialize(this, c, movement, animator));
         states.Add(typeof(DashState), gameObject.AddComponent<DashState>().Initialize(this, c, movement, animator));
-        
+
         states.Add(typeof(WallClingState), gameObject.AddComponent<WallClingState>().Initialize(this, c, movement, animator));
         states.Add(typeof(WallJumpState), gameObject.AddComponent<WallJumpState>().Initialize(this, c, movement, animator));
 

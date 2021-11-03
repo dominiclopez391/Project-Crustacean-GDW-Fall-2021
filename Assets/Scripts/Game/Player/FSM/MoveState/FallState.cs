@@ -5,6 +5,7 @@ using UnityEngine;
 public class FallState : MoveState
 {
     float tUngrounded = 0f;
+    bool dash;
     bool hasFastFallen;
     public override void Begin()
     {
@@ -23,9 +24,15 @@ public class FallState : MoveState
 
         tUngrounded = Time.time;
         hasFastFallen = false;
+        movement.SetFrictionless(true);
         base.Begin();
     }
 
+    public virtual void SetDash(bool dash)
+    {
+        this.dash = dash;
+    }
+    
     public override void Loop()
     {
         base.Loop();
@@ -94,7 +101,7 @@ public class FallState : MoveState
     {
         if (hasFastFallen)
             return;
-        else if(vert < 0)
+        else if (vert < 0)
         {
             animator.createFastFallParticle();
             movement.FastFall(vert);
@@ -104,13 +111,14 @@ public class FallState : MoveState
 
     public override void End()
     {
-        c.horizontal -= movement.UpdateFall;
+        if (!dash)
+            c.horizontal -= movement.UpdateFall;
         c.horizontal -= CheckWallCling;
         c.horizontal -= movement.UpdateWalk;
         c.jumpRelease -= Stall;
         c.vertical -= FastFall;
-        //c.jump -= Jump;
-        
+        c.jump -= Jump;
+        dash = false;
         base.End();
     }
 
