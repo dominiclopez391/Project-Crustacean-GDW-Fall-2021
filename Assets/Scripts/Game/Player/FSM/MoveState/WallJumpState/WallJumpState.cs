@@ -14,6 +14,7 @@ public class WallJumpState : State
     public override void Begin()
     {
         animator.handleMirroring(movement.GetWallCollisionType() == WallCollisionType.rightWall);
+        animator.createWallJumpParticle();
         movement.WallJump();
         movement.Jump();
         movement.SetStallJump(true);
@@ -25,7 +26,6 @@ public class WallJumpState : State
     {
         base.Loop();
         tWallJump += Time.deltaTime;
-        
         if(tWallJump > WallJumpTime)
         {
             fsm.ChangeState<FallState>();

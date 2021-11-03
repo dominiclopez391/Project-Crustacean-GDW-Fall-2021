@@ -26,8 +26,8 @@ public class DashState : MoveState
     {
         base.Begin();
         c.jump += Jump;
-        
-        
+        animator.Dash(true);
+        animator.createDashStartParticle();
         tDash = Time.time;
 
     }
@@ -46,6 +46,7 @@ public class DashState : MoveState
         movement.UpdateGravity();
         movement.Dash(directionLeft);
         movement.Walk();
+        animator.createDashContinueParticle();
         if (movement.DashEnded(tDash))
         {
             fsm.ChangeState<WalkState>();
@@ -57,6 +58,7 @@ public class DashState : MoveState
     {
         base.End();
         c.jump -= Jump;
+        animator.Dash(false);
     }
 
 }

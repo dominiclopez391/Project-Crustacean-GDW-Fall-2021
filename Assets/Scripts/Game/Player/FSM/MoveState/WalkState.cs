@@ -17,7 +17,6 @@ public class WalkState : MoveState
 
         movement.SetAccel(true);
         movement.SetStallJump(false);
-        
     }
 
     public override void Loop()

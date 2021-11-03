@@ -5,15 +5,16 @@ using UnityEngine;
 public class FallState : MoveState
 {
     float tUngrounded = 0f;
+    bool hasFastFallen;
     public override void Begin()
     {
         
         c.horizontal += movement.UpdateFall;
         c.jumpRelease += Stall;
-        c.jump += Jump;
+        //c.jump += Jump;
         
         movement.SetAccel(false);
-        c.vertical += movement.FastFall;
+        c.vertical += FastFall;
         c.horizontal += CheckWallCling;
         movement.SetStallJump(true);
         movement.SetBufferJump();
@@ -21,6 +22,7 @@ public class FallState : MoveState
         animator.Fall(true);
 
         tUngrounded = Time.time;
+        hasFastFallen = false;
         base.Begin();
     }
 
@@ -28,7 +30,6 @@ public class FallState : MoveState
     {
         base.Loop();
         DoPhysics();
-
         
         if(movement.GetGrounded()
             && tUngrounded + 0.1f < Time.time)
@@ -89,14 +90,26 @@ public class FallState : MoveState
         }
     }
 
+    public void FastFall(float vert)
+    {
+        if (hasFastFallen)
+            return;
+        else if(vert < 0)
+        {
+            animator.createFastFallParticle();
+            movement.FastFall(vert);
+            hasFastFallen = true;
+        }
+    }
+
     public override void End()
     {
         c.horizontal -= movement.UpdateFall;
         c.horizontal -= CheckWallCling;
         c.horizontal -= movement.UpdateWalk;
         c.jumpRelease -= Stall;
-        c.vertical -= movement.FastFall;
-        c.jump -= Jump;
+        c.vertical -= FastFall;
+        //c.jump -= Jump;
         
         base.End();
     }

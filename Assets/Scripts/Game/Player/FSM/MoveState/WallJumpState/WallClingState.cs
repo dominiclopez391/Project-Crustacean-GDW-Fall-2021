@@ -53,6 +53,7 @@ public class WallClingState : MoveState
     {
         base.Loop();
         movement.UpdateMidair();
+        animator.createWallClingParticle();
     }
 
     public override void End()

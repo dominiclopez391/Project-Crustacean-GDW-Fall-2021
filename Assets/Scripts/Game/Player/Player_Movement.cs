@@ -178,10 +178,11 @@ public class Player_Movement : MonoBehaviour
         Debug.DrawRay(this.transform.position, clockwise, Color.red);
         Debug.DrawRay(this.transform.position, counterClockwise, Color.red);
         */
-        Debug.DrawRay(this.transform.position, slopeNormalPerp, Color.yellow);
+        
         if (GetGrounded()) //if on ground, flat or sloped
         {
-            rb.velocity = new Vector2(slopeNormalPerp.x * -velX, -0.005f);
+            Debug.DrawRay(this.transform.position, slopeNormalPerp, Color.yellow);
+            rb.velocity = new Vector2(slopeNormalPerp.x * -velX, slopeNormalPerp.y * -velX);
             
         }
         else  //If in air
@@ -362,7 +363,6 @@ public class Player_Movement : MonoBehaviour
         );
         normal = collision.contacts[0].normal.normalized;
         slopeNormalPerp = Vector2.Perpendicular(normal).normalized;
-        //Debug.Log("Collision");
 
         if (Vector3.Dot(Vector3.Cross(clockwise, normal), Vector3.Cross(clockwise, counterClockwise)) >= 0 
             && Vector3.Dot(Vector3.Cross(counterClockwise, normal), Vector3.Cross(counterClockwise, clockwise)) >= 0)
