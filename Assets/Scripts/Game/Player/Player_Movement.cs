@@ -139,20 +139,6 @@ public class Player_Movement : MonoBehaviour
      * ensures player does not have friction, and
      * allows player to move in air
      */
-
-    public void SetFrictionless(bool frictionless)
-    {
-        if(frictionless)
-        {
-            rb.sharedMaterial = noFriction;
-        }
-        else
-        {
-            rb.sharedMaterial = fullFriction;
-        }
-        
-    }
-
     public void UpdateFall(float vel)
     {
         

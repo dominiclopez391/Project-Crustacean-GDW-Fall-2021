@@ -42,11 +42,6 @@ public class WallJumpState : State
 
     }
 
-    public void SetDash(bool dash)
-    {
-        this.dash = dash;
-    }
-
     public override void End()
     {
         dash = false;
