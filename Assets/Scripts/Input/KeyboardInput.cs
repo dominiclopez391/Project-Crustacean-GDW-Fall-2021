@@ -40,7 +40,7 @@ public class KeyboardInput : MonoBehaviour
         }
         if(c.dash != null)
         {
-            c.dash(Input.GetKeyDown(KeyCode.LeftShift));
+            c.dash(Input.GetKey(KeyCode.LeftShift));
         }
 
 

@@ -48,6 +48,7 @@ public class WalkState : MoveState
     {
         if(!movement.GetGrounded())
         {
+            fsm.GetState<FallState>().setFallSlow(true);
             fsm.ChangeState<FallState>();
         }
     }

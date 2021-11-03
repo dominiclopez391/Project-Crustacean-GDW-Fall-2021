@@ -6,6 +6,7 @@ public class WallClingState : MoveState
 {
 
     public WallCollisionType wcType;
+    public bool dash = false;
 
     public override void Begin()
     {
@@ -13,6 +14,7 @@ public class WallClingState : MoveState
         wcType = movement.GetWallCollisionType();
         c.horizontal += Cling;
         c.jump += Jump;
+        c.dash += IsDashing;
         animator.Wall(true);
 
     }
@@ -41,10 +43,16 @@ public class WallClingState : MoveState
 
     }
 
+    public void IsDashing(bool dash)
+    {
+        this.dash = dash;
+    }
+
     public void Jump(bool jump)
     {
         if(jump)
         {
+            fsm.GetComponent<WallJumpState>().SetDash(dash);
             fsm.ChangeState<WallJumpState>();
         }
     }
@@ -58,6 +66,7 @@ public class WallClingState : MoveState
     public override void End()
     {
         base.End();
+        c.dash -= IsDashing;
         c.horizontal -= Cling;
         c.jump -= Jump;
         animator.Wall(false);

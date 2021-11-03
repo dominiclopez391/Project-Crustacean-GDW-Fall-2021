@@ -26,8 +26,9 @@ public class DashState : MoveState
     {
         base.Begin();
         c.jump += Jump;
-        
-        
+        c.dash += StopDash;
+
+        movement.SetFrictionless(true);
         tDash = Time.time;
 
     }
@@ -36,6 +37,7 @@ public class DashState : MoveState
     {
         if(jump)
         {
+            fsm.GetState<JumpState>().SetDash(true);
             fsm.ChangeState<JumpState>();
         }
     }
@@ -43,20 +45,38 @@ public class DashState : MoveState
     public override void Loop()
     {
         base.Loop();
-        movement.UpdateGravity();
+        Debug.Log(directionLeft);
+
         movement.Dash(directionLeft);
+        movement.UpdateGravity();
         movement.Walk();
-        if (movement.DashEnded(tDash))
+        CheckFallOff();
+
+    }
+
+    public void CheckFallOff()
+    {
+        if (!movement.GetGrounded())
+        {
+            fsm.GetState<FallState>().setFallSlow(true);
+            fsm.GetState<FallState>().SetDash(true);
+            fsm.ChangeState<FallState>();
+        }
+    }
+
+    public void StopDash(bool dash)
+    {
+        if(!dash)
         {
             fsm.ChangeState<WalkState>();
         }
-
     }
 
     public override void End()
     {
         base.End();
         c.jump -= Jump;
+        c.dash -= StopDash;
     }
 
 }

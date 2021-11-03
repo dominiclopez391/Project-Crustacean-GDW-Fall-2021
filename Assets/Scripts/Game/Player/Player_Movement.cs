@@ -126,9 +126,23 @@ public class Player_Movement : MonoBehaviour
      * ensures player does not have friction, and
      * allows player to move in air
      */
+
+    public void SetFrictionless(bool frictionless)
+    {
+        if(frictionless)
+        {
+            rb.sharedMaterial = noFriction;
+        }
+        else
+        {
+            rb.sharedMaterial = fullFriction;
+        }
+        
+    }
+
     public void UpdateFall(float vel)
     {
-        rb.sharedMaterial = noFriction;
+        
         if (vel == 0)
         {
             velX = 0;
@@ -181,7 +195,7 @@ public class Player_Movement : MonoBehaviour
         Debug.DrawRay(this.transform.position, slopeNormalPerp, Color.yellow);
         if (GetGrounded()) //if on ground, flat or sloped
         {
-            rb.velocity = new Vector2(slopeNormalPerp.x * -velX, -0.005f);
+            rb.velocity = new Vector2(slopeNormalPerp.x * -velX, -0.00000005f);
             
         }
         else  //If in air
@@ -194,9 +208,11 @@ public class Player_Movement : MonoBehaviour
 
     }
 
-    public void WallJump()
+    public void WallJump(bool dash)
     {
-        velX = (GetWallCollisionType() == WallCollisionType.leftWall ? c.WALK_MAX_SPEED : -1*c.WALK_MAX_SPEED);
+        float speed = dash ? c.DASH_SPEED : c.WALK_MAX_SPEED;
+
+        velX = (GetWallCollisionType() == WallCollisionType.leftWall ? speed : -1* speed);
     }
 
     public void SetLastCoyoteJump(bool jump = true)
@@ -412,11 +428,13 @@ public class Player_Movement : MonoBehaviour
     public void Jump()
     {
         velY = c.JUMP_VEL;
-        Fall();
+        Fall(false);
     }
 
-    public void Fall()
+    public void Fall(bool zeroYVel)
     {
+        //if(zeroYVel)
+            //velY = 0f;
         BufferJumpTime = Time.time;
         grounded = false;
         hitHead = false;

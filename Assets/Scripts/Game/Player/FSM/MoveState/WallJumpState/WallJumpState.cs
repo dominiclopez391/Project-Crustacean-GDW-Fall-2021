@@ -7,18 +7,23 @@ using UnityEngine;
 
 public class WallJumpState : State
 {
-
+    bool dash = false;
     float tWallJump = 0f;
     float WallJumpTime = 0.1f;
 
     public override void Begin()
     {
         animator.handleMirroring(movement.GetWallCollisionType() == WallCollisionType.rightWall);
-        movement.WallJump();
+        movement.WallJump(dash);
         movement.Jump();
         movement.SetStallJump(true);
         c.jumpRelease += Stall;
         tWallJump = 0f;
+    }
+
+    public void SetDash(bool dash)
+    {
+        this.dash = dash;
     }
 
     public override void Loop()
@@ -26,20 +31,22 @@ public class WallJumpState : State
         base.Loop();
         tWallJump += Time.deltaTime;
         
-        if(tWallJump > WallJumpTime)
-        {
-            fsm.ChangeState<FallState>();
-        }
+        
 
         movement.UpdateGravity();
         movement.UpdateMidair();
         movement.StopRisingIfHitHead();
-
+        if (tWallJump > WallJumpTime)
+        {
+            fsm.GetState<FallState>().SetDash(dash);
+            fsm.ChangeState<FallState>();
+        }
 
     }
 
     public override void End()
     {
+        dash = false;
         c.jumpRelease -= Stall;
     }
 
