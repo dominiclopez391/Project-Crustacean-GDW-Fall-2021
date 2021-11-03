@@ -7,15 +7,18 @@ public class JumpState : FallState
     public override void Begin()
     {
         base.Begin();
+        c.jump += Jump;
         movement.Jump();
         animator.Jump(true);
         movement.SetLastCoyoteJump(false);
         movement.SetBufferJump(false);
+        animator.createJumpingParticle();
     }
 
 
     public override void End()
     {
+        c.jump -= Jump;
         base.End();
     }
 }

@@ -5,7 +5,9 @@ using UnityEngine;
 public class FallState : MoveState
 {
     float tUngrounded = 0f;
-    bool dash, fallSlow;
+    bool fallSlow;
+    bool dash;
+    bool hasFastFallen;
     public override void Begin()
     {
         if (!dash)
@@ -15,9 +17,7 @@ public class FallState : MoveState
         c.jump += Jump;
         
         movement.SetAccel(false);
-
-        
-        c.vertical += movement.FastFall;
+        c.vertical += FastFall;
         c.horizontal += CheckWallCling;
         movement.SetStallJump(true);
         movement.SetBufferJump();
@@ -25,7 +25,7 @@ public class FallState : MoveState
         animator.Fall(true);
 
         tUngrounded = Time.time;
-
+        hasFastFallen = false;
         movement.SetFrictionless(true);
         base.Begin();
     }
@@ -39,12 +39,11 @@ public class FallState : MoveState
     {
         this.dash = dash;
     }
-
+    
     public override void Loop()
     {
         base.Loop();
         DoPhysics();
-
         
         if(movement.GetGrounded()
             && tUngrounded + 0.1f < Time.time)
@@ -104,6 +103,18 @@ public class FallState : MoveState
         }
     }
 
+    public void FastFall(float vert)
+    {
+        if (hasFastFallen)
+            return;
+        else if (vert < 0)
+        {
+            animator.createFastFallParticle();
+            movement.FastFall(vert);
+            hasFastFallen = true;
+        }
+    }
+
     public override void End()
     {
         fallSlow = false;
@@ -112,7 +123,7 @@ public class FallState : MoveState
         c.horizontal -= CheckWallCling;
         c.horizontal -= movement.UpdateWalk;
         c.jumpRelease -= Stall;
-        c.vertical -= movement.FastFall;
+        c.vertical -= FastFall;
         c.jump -= Jump;
         dash = false;
         base.End();

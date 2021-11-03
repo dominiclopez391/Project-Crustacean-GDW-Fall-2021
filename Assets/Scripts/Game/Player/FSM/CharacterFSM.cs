@@ -11,12 +11,13 @@ public class CharacterFSM : MonoBehaviour
     //state machine stuff
     public State curState;
     GameController c;
+    public GameObject jumpPrefab, landPrefab, wallClingPrefab, wallJumpPrefab, dashStartPrefab, dashcontPrefab;
+    public GameObject player;
 
     //unity objs
     Rigidbody2D rb;
     Animator anim;
     public PhysicsMaterial2D fullFriction, noFriction;// material for staying still with infinite friction, or moving with no friction
-
 
     //custom controllers
     Player_Animator animator;
@@ -26,7 +27,7 @@ public class CharacterFSM : MonoBehaviour
 
     void Start()
     {
-        
+
         c = GameController.mainController;
         states = new Dictionary<Type, State>();
 
@@ -36,7 +37,7 @@ public class CharacterFSM : MonoBehaviour
 
         //custom controller initialization
         movement = gameObject.AddComponent<Player_Movement>().Initialize(rb, settings.GetSettingsFor(), fullFriction, noFriction);
-        animator = gameObject.AddComponent<Player_Animator>().Initialize(anim);
+        animator = gameObject.AddComponent<Player_Animator>().Initialize(anim, jumpPrefab, landPrefab, wallClingPrefab, wallJumpPrefab, dashStartPrefab, dashcontPrefab, player);
 
         //state initialization
         states.Add(typeof(IdleState), gameObject.AddComponent<IdleState>().Initialize(this, c, movement, animator));
@@ -44,7 +45,7 @@ public class CharacterFSM : MonoBehaviour
         states.Add(typeof(FallState), gameObject.AddComponent<FallState>().Initialize(this, c, movement, animator));
         states.Add(typeof(WalkState), gameObject.AddComponent<WalkState>().Initialize(this, c, movement, animator));
         states.Add(typeof(DashState), gameObject.AddComponent<DashState>().Initialize(this, c, movement, animator));
-        
+
         states.Add(typeof(WallClingState), gameObject.AddComponent<WallClingState>().Initialize(this, c, movement, animator));
         states.Add(typeof(WallJumpState), gameObject.AddComponent<WallJumpState>().Initialize(this, c, movement, animator));
 
@@ -56,7 +57,6 @@ public class CharacterFSM : MonoBehaviour
     public void FixedUpdate()
     {
         curState.Loop();
-        
     }
 
     public void ChangeState<T>()
@@ -67,9 +67,21 @@ public class CharacterFSM : MonoBehaviour
             curState.End();
         }
 
+        checkLanding<T>();
+
         states[typeof(T)].Begin();
         curState = states[typeof(T)];
 
+    }
+
+    //special case, animator only play the landing particles if going from FallState or JumpState, to WalkState
+    //the FSM is the only place in the code that can know this scenario
+    private void checkLanding<T>()
+    {
+        if ((curState == states[typeof(FallState)] || curState == states[typeof(JumpState)]) && typeof(T) == typeof(WalkState))
+        {
+            animator.createLandingParticle();
+        }
     }
 
     public T GetState<T>() where T : class

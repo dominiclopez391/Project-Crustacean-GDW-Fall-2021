@@ -14,6 +14,7 @@ public class WallJumpState : State
     public override void Begin()
     {
         animator.handleMirroring(movement.GetWallCollisionType() == WallCollisionType.rightWall);
+        animator.createWallJumpParticle();
         movement.WallJump(dash);
         movement.Jump();
         movement.SetStallJump(true);
@@ -30,9 +31,6 @@ public class WallJumpState : State
     {
         base.Loop();
         tWallJump += Time.deltaTime;
-        
-        
-
         movement.UpdateGravity();
         movement.UpdateMidair();
         movement.StopRisingIfHitHead();
@@ -42,6 +40,11 @@ public class WallJumpState : State
             fsm.ChangeState<FallState>();
         }
 
+    }
+
+    public void SetDash(bool dash)
+    {
+        this.dash = dash;
     }
 
     public override void End()
