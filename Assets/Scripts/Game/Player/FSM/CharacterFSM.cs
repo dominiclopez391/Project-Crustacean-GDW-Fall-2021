@@ -49,6 +49,7 @@ public class CharacterFSM : MonoBehaviour
         states.Add(typeof(WallClingState), gameObject.AddComponent<WallClingState>().Initialize(this, c, movement, animator));
         states.Add(typeof(WallJumpState), gameObject.AddComponent<WallJumpState>().Initialize(this, c, movement, animator));
 
+        states.Add(typeof(DamagedState), gameObject.AddComponent<DamagedState>().Initialize(this, c, movement, animator));
         //entry state
         ChangeState<IdleState>();
 

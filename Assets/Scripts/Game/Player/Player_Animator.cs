@@ -11,7 +11,7 @@ public class Player_Animator : MonoBehaviour
     GameObject jumpPrefab, landPrefab, wallClingPrefab, wallJumpPrefab, dashStartPrefab, dashContinuePrefab;
     GameObject player;
     private const float PARTICLE_SYSTEM_DEPSPAWN_TIMER = 3.0f;
-    private const float landingOffsetX = 0.2f, landingOffsetY = 0.146875f, fastFallOffset = -0.5f, jumpOffsetX = 0.1f, jumpOffsetY = 0.0f, 
+    private const float landingOffsetX = 0.2f, landingOffsetY = 0.046875f, fastFallOffset = -0.5f, jumpOffsetX = 0.1f, jumpOffsetY = -0.1f, 
         wallClingOffsetX = 0.05f, wallClingOffsetY = 0.1f, wallJumpOffset = 0.2f, dashStartOffsetX = 0.2f, dashStartOffsetY = 0.1f, dashContinueOffsetY = 0.12f;
     private float tWallClingAnim = 0f, wallClingLoopTime = 0.1f; //time for repeating the wall clinging animation
     private float tDashContAnim = 0f, dashContLoopTime = 0.01f; // time for repeating the dash continuing animation
@@ -34,16 +34,20 @@ public class Player_Animator : MonoBehaviour
     {
         //Creates two landing particle animations left and right of the collision spot
         //This gives a visual effect of a fall impact with the ground
-        Vector2 landingPosLeft = Quaternion.Euler(0, 0, slopeDegrees) * (new Vector3(player.transform.position.x - landingOffsetX, player.transform.position.y - landingOffsetY, 0) - player.transform.position) + player.transform.position;
-        Vector2 landingPosRight = Quaternion.Euler(0, 0, slopeDegrees) * (new Vector3(player.transform.position.x + landingOffsetX, player.transform.position.y - landingOffsetY, 0) - player.transform.position) + player.transform.position;
+        Vector2 landingPosLeft = Quaternion.Euler(0, 0, slopeDegrees) * 
+            (new Vector3(player.transform.position.x - landingOffsetX, player.transform.position.y - landingOffsetY, 0) - player.transform.position) + player.transform.position;
+        Vector2 landingPosRight = Quaternion.Euler(0, 0, slopeDegrees) * 
+            (new Vector3(player.transform.position.x + landingOffsetX, player.transform.position.y - landingOffsetY, 0) - player.transform.position) + player.transform.position;
         // rotate vector forward by 60 degrees Quaternion.Euler(60, 0, 0) * Vector3.forward
         // rotate a point around a pivot  Quaternion.Euler(0,0,slopeDegrees) * (new Vector3(player.transform.position.x - landingOffsetX, player.transform.position.y - landingOffsetY, 0) - player.transform.position) + player.transform.position;
         GameObject landingSpotLeft = Instantiate(landPrefab, landingPosLeft, Quaternion.Euler(0, 0, 0));
         landingSpotLeft.GetComponent<ParticleSystemRenderer>().flip = new Vector3(1, 0, 0);
-        landingSpotLeft.GetComponent<ParticleSystem>().startRotation = -Mathf.Deg2Rad * slopeDegrees;
+        ParticleSystem.MainModule psMainLeft = landingSpotLeft.GetComponent<ParticleSystem>().main;
+        psMainLeft.startRotation = - Mathf.Deg2Rad * slopeDegrees; 
         
         GameObject landingSpotRight = Instantiate(landPrefab, landingPosRight, Quaternion.Euler(0, 0, 0));
-        landingSpotRight.GetComponent<ParticleSystem>().startRotation = -Mathf.Deg2Rad * slopeDegrees;
+        ParticleSystem.MainModule psMainRight = landingSpotRight.GetComponent<ParticleSystem>().main;
+        psMainRight.startRotation = - Mathf.Deg2Rad * slopeDegrees;
 
         Destroy(landingSpotLeft, PARTICLE_SYSTEM_DEPSPAWN_TIMER); // cleans up spriteless object after animation
         Destroy(landingSpotRight, PARTICLE_SYSTEM_DEPSPAWN_TIMER); // cleans up spriteless object after animation
@@ -68,15 +72,19 @@ public class Player_Animator : MonoBehaviour
     {
         //Creates a jumping particle animation opposite the faced direction
         //This gives a visual effect of a jump effect behind the player
-        Vector2 jumpingPosLeft = Quaternion.Euler(0, 0, slopeDegrees) * (new Vector3(player.transform.position.x - jumpOffsetX, player.transform.position.y - jumpOffsetY, 0) - player.transform.position) + player.transform.position; //effect on left;
-        Vector2 jumpingPosRight = Quaternion.Euler(0, 0, slopeDegrees) * (new Vector3(player.transform.position.x + jumpOffsetX, player.transform.position.y - jumpOffsetY, 0) - player.transform.position) + player.transform.position; //effect on right
+        Vector2 jumpingPosLeft = Quaternion.Euler(0, 0, slopeDegrees) * 
+            (new Vector3(player.transform.position.x - jumpOffsetX, player.transform.position.y - jumpOffsetY, 0) - player.transform.position) + player.transform.position; //effect on left;
+        Vector2 jumpingPosRight = Quaternion.Euler(0, 0, slopeDegrees) * 
+            (new Vector3(player.transform.position.x + jumpOffsetX, player.transform.position.y - jumpOffsetY, 0) - player.transform.position) + player.transform.position; //effect on right
 
         GameObject jumpingSpotLeft = Instantiate(jumpPrefab, jumpingPosLeft, Quaternion.Euler(0, 0, 0));
         jumpingSpotLeft.GetComponent<ParticleSystemRenderer>().flip = new Vector3(1, 0, 0);
-        jumpingSpotLeft.GetComponent<ParticleSystem>().startRotation = -Mathf.Deg2Rad * slopeDegrees;
+        ParticleSystem.MainModule psMainLeft = jumpingSpotLeft.GetComponent<ParticleSystem>().main;
+        psMainLeft.startRotation = -Mathf.Deg2Rad * slopeDegrees;
 
         GameObject jumpingSpotRight = Instantiate(jumpPrefab, jumpingPosRight, Quaternion.Euler(0, 0, 0));
-        jumpingSpotRight.GetComponent<ParticleSystem>().startRotation = -Mathf.Deg2Rad * slopeDegrees;
+        ParticleSystem.MainModule psMainRight = jumpingSpotRight.GetComponent<ParticleSystem>().main;
+        psMainRight.startRotation = -Mathf.Deg2Rad * slopeDegrees;
 
         Destroy(jumpingSpotLeft, PARTICLE_SYSTEM_DEPSPAWN_TIMER); // cleans up spriteless object after animation
         Destroy(jumpingSpotRight, PARTICLE_SYSTEM_DEPSPAWN_TIMER); // cleans up spriteless object after animation
@@ -178,6 +186,11 @@ public class Player_Animator : MonoBehaviour
     public void Dash(bool dash)
     {
         anim.SetBool("isDashing", dash);
+    }
+
+    public void Damage(bool damaged)
+    {
+        anim.SetBool("isDamageLocked", damaged);
     }
 
     public void handleMirroring(float vel)

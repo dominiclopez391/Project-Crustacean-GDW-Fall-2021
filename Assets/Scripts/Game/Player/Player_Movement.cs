@@ -340,6 +340,19 @@ public class Player_Movement : MonoBehaviour
 
     }
 
+    public void Freeze()
+    {
+        velX = 0;
+        velY = 0;
+        Gravity(false);
+        UpdateMidair();
+    }
+
+    public void Gravity(bool g)
+    {
+        rb.gravityScale = g ? 1: 0;
+    }
+
     /**
      * Checks the normal of the collision
      * and determines if 
