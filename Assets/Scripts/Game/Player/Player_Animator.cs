@@ -11,9 +11,10 @@ public class Player_Animator : MonoBehaviour
     GameObject jumpPrefab, landPrefab, wallClingPrefab, wallJumpPrefab, dashStartPrefab, dashContinuePrefab;
     GameObject player;
     private const float PARTICLE_SYSTEM_DEPSPAWN_TIMER = 3.0f;
-    private const float landingOffset = 0.2f, fastFallOffset = -0.5f, jumpOffset = 0.26f, wallClingOffset = 0.2f, wallJumpOffset = 0.2f, dashStartOffset = 0.2f;
-    private float tWallClingAnim = 0f, wallClingLoopTime = 0.2f; //time for repeating the wall clinging animation
-    private float tDashContAnim = 0f, dashContLoopTime = 0.02f; // time for repeating the dash continuing animation
+    private const float landingOffsetX = 0.2f, landingOffsetY = 0.146875f, fastFallOffset = -0.5f, jumpOffsetX = 0.1f, jumpOffsetY = 0.0f, 
+        wallClingOffsetX = 0.05f, wallClingOffsetY = 0.1f, wallJumpOffset = 0.2f, dashStartOffsetX = 0.2f, dashStartOffsetY = 0.1f, dashContinueOffsetY = 0.12f;
+    private float tWallClingAnim = 0f, wallClingLoopTime = 0.1f; //time for repeating the wall clinging animation
+    private float tDashContAnim = 0f, dashContLoopTime = 0.01f; // time for repeating the dash continuing animation
 
 
     public Player_Animator Initialize(Animator anim, GameObject jPf, GameObject lPf, GameObject wcPf, GameObject wjPf, GameObject dsPf, GameObject dcPf, GameObject p)
@@ -29,15 +30,21 @@ public class Player_Animator : MonoBehaviour
         return this;
     }
 
-    public void createLandingParticle()
+    public void createLandingParticle(float slopeDegrees)
     {
         //Creates two landing particle animations left and right of the collision spot
         //This gives a visual effect of a fall impact with the ground
-        Vector2 landingPosLeft = new Vector2(player.transform.position.x - landingOffset, player.transform.position.y);
-        Vector2 landingPosRight = new Vector2(player.transform.position.x + landingOffset, player.transform.position.y);
+        Vector2 landingPosLeft = Quaternion.Euler(0, 0, slopeDegrees) * (new Vector3(player.transform.position.x - landingOffsetX, player.transform.position.y - landingOffsetY, 0) - player.transform.position) + player.transform.position;
+        Vector2 landingPosRight = Quaternion.Euler(0, 0, slopeDegrees) * (new Vector3(player.transform.position.x + landingOffsetX, player.transform.position.y - landingOffsetY, 0) - player.transform.position) + player.transform.position;
+        // rotate vector forward by 60 degrees Quaternion.Euler(60, 0, 0) * Vector3.forward
+        // rotate a point around a pivot  Quaternion.Euler(0,0,slopeDegrees) * (new Vector3(player.transform.position.x - landingOffsetX, player.transform.position.y - landingOffsetY, 0) - player.transform.position) + player.transform.position;
         GameObject landingSpotLeft = Instantiate(landPrefab, landingPosLeft, Quaternion.Euler(0, 0, 0));
         landingSpotLeft.GetComponent<ParticleSystemRenderer>().flip = new Vector3(1, 0, 0);
+        landingSpotLeft.GetComponent<ParticleSystem>().startRotation = -Mathf.Deg2Rad * slopeDegrees;
+        
         GameObject landingSpotRight = Instantiate(landPrefab, landingPosRight, Quaternion.Euler(0, 0, 0));
+        landingSpotRight.GetComponent<ParticleSystem>().startRotation = -Mathf.Deg2Rad * slopeDegrees;
+
         Destroy(landingSpotLeft, PARTICLE_SYSTEM_DEPSPAWN_TIMER); // cleans up spriteless object after animation
         Destroy(landingSpotRight, PARTICLE_SYSTEM_DEPSPAWN_TIMER); // cleans up spriteless object after animation
     }
@@ -47,8 +54,8 @@ public class Player_Animator : MonoBehaviour
         //Reversal of wall cling animations?
         //Creates two fast falling particle animations left and right of the collision spot
         //This gives a visual effect of a change of fall in the air
-        Vector2 fastFallPosLeft = new Vector2(player.transform.position.x - landingOffset, player.transform.position.y + fastFallOffset);
-        Vector2 fastFallPosRight = new Vector2(player.transform.position.x + landingOffset, player.transform.position.y + fastFallOffset);
+        Vector2 fastFallPosLeft = new Vector2(player.transform.position.x - landingOffsetX, player.transform.position.y + fastFallOffset);
+        Vector2 fastFallPosRight = new Vector2(player.transform.position.x + landingOffsetX, player.transform.position.y + fastFallOffset);
         GameObject fastFallSpotLeft = Instantiate(wallClingPrefab, fastFallPosLeft, Quaternion.Euler(0, 0, 0));
         fastFallSpotLeft.GetComponent<ParticleSystemRenderer>().flip = new Vector3(1, 1, 0);
         GameObject fastFallSpotRight = Instantiate(wallClingPrefab, fastFallPosRight, Quaternion.Euler(0, 0, 0));
@@ -57,16 +64,20 @@ public class Player_Animator : MonoBehaviour
         Destroy(fastFallSpotRight, PARTICLE_SYSTEM_DEPSPAWN_TIMER); // cleans up spriteless object after animation
     }
 
-    public void createJumpingParticle()
+    public void createJumpingParticle(float slopeDegrees)
     {
         //Creates a jumping particle animation opposite the faced direction
         //This gives a visual effect of a jump effect behind the player
-        Vector2 jumpingPosLeft = new Vector2(player.transform.position.x - jumpOffset, player.transform.position.y + jumpOffset); //effect on left;
-        Vector2 jumpingPosRight = new Vector2(player.transform.position.x + jumpOffset, player.transform.position.y + jumpOffset); //effect on right
+        Vector2 jumpingPosLeft = Quaternion.Euler(0, 0, slopeDegrees) * (new Vector3(player.transform.position.x - jumpOffsetX, player.transform.position.y - jumpOffsetY, 0) - player.transform.position) + player.transform.position; //effect on left;
+        Vector2 jumpingPosRight = Quaternion.Euler(0, 0, slopeDegrees) * (new Vector3(player.transform.position.x + jumpOffsetX, player.transform.position.y - jumpOffsetY, 0) - player.transform.position) + player.transform.position; //effect on right
+
         GameObject jumpingSpotLeft = Instantiate(jumpPrefab, jumpingPosLeft, Quaternion.Euler(0, 0, 0));
         jumpingSpotLeft.GetComponent<ParticleSystemRenderer>().flip = new Vector3(1, 0, 0);
+        jumpingSpotLeft.GetComponent<ParticleSystem>().startRotation = -Mathf.Deg2Rad * slopeDegrees;
+
         GameObject jumpingSpotRight = Instantiate(jumpPrefab, jumpingPosRight, Quaternion.Euler(0, 0, 0));
-        
+        jumpingSpotRight.GetComponent<ParticleSystem>().startRotation = -Mathf.Deg2Rad * slopeDegrees;
+
         Destroy(jumpingSpotLeft, PARTICLE_SYSTEM_DEPSPAWN_TIMER); // cleans up spriteless object after animation
         Destroy(jumpingSpotRight, PARTICLE_SYSTEM_DEPSPAWN_TIMER); // cleans up spriteless object after animation
     }
@@ -83,8 +94,8 @@ public class Player_Animator : MonoBehaviour
         else return;
         Vector2 wallClingPos;
         if(this.transform.localScale.x > 0.0f )
-            wallClingPos = new Vector2(player.transform.position.x + wallClingOffset, player.transform.position.y); //effect on right
-        else wallClingPos = new Vector2(player.transform.position.x - wallClingOffset, player.transform.position.y); //effect on left
+            wallClingPos = new Vector2(player.transform.position.x + wallClingOffsetX, player.transform.position.y + wallClingOffsetY); //effect on right
+        else wallClingPos = new Vector2(player.transform.position.x - wallClingOffsetX, player.transform.position.y + wallClingOffsetY); //effect on left
         GameObject wallClingSpot = Instantiate(wallClingPrefab, wallClingPos, Quaternion.Euler(0, 0, 0));
 
         Destroy(wallClingSpot, PARTICLE_SYSTEM_DEPSPAWN_TIMER); // cleans up spriteless object after animation
@@ -111,9 +122,9 @@ public class Player_Animator : MonoBehaviour
         Vector2 dashStartPos;
         if (this.transform.localScale.x < 0.0f)
         {
-            dashStartPos = new Vector2(player.transform.position.x - dashStartOffset, player.transform.position.y); //effect to the left
+            dashStartPos = new Vector2(player.transform.position.x - dashStartOffsetX, player.transform.position.y); //effect to the left
         }
-        else dashStartPos = new Vector2(player.transform.position.x + dashStartOffset, player.transform.position.y); //effect to the right
+        else dashStartPos = new Vector2(player.transform.position.x + dashStartOffsetX, player.transform.position.y); //effect to the right
         GameObject dashStartSpot = Instantiate(dashStartPrefab, dashStartPos, Quaternion.Euler(0, 0, 0));
         if (this.transform.localScale.x < 0.0f)
         {
@@ -133,7 +144,7 @@ public class Player_Animator : MonoBehaviour
             tDashContAnim = 0;
         }
         else return;
-        Vector2 dashContPos = new Vector2(player.transform.position.x, player.transform.position.y); //effect on player
+        Vector2 dashContPos = new Vector2(player.transform.position.x, player.transform.position.y - dashContinueOffsetY); //effect on player
         GameObject dashContSpot = Instantiate(dashContinuePrefab, dashContPos, Quaternion.Euler(0, 0, 0));
 
         Destroy(dashContSpot, PARTICLE_SYSTEM_DEPSPAWN_TIMER); // cleans up spriteless object after animation

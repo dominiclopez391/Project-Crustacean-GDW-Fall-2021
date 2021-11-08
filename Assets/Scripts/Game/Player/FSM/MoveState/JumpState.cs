@@ -12,7 +12,7 @@ public class JumpState : FallState
         animator.Jump(true);
         movement.SetLastCoyoteJump(false);
         movement.SetBufferJump(false);
-        animator.createJumpingParticle();
+        animator.createJumpingParticle(Vector2.Angle(movement.getNormal(), Vector2.up));
     }
 
 

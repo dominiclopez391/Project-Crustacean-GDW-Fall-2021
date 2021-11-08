@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4255255266611436709}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 2.3348906, y: 0.008521989, z: 1}
+  m_LocalPosition: {x: 2.3348906, y: 0.008521989, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -337,7 +337,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.28125
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -601,7 +601,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     maxNumParticles: 1
-    size3D: 0
+    size3D: 1
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
@@ -1480,7 +1480,13 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 0}
+    - sprite: {fileID: -3244210891593944728, guid: ddde254164b1fcd41a0399be13b900b6, type: 3}
+    - sprite: {fileID: -4827976114475886500, guid: ddde254164b1fcd41a0399be13b900b6, type: 3}
+    - sprite: {fileID: 8556466067546749566, guid: ddde254164b1fcd41a0399be13b900b6, type: 3}
+    - sprite: {fileID: -6059605225249433947, guid: ddde254164b1fcd41a0399be13b900b6, type: 3}
+    - sprite: {fileID: 3466152205161473153, guid: ddde254164b1fcd41a0399be13b900b6, type: 3}
+    - sprite: {fileID: -5802830648807614634, guid: ddde254164b1fcd41a0399be13b900b6, type: 3}
+    - sprite: {fileID: 7509271922321245126, guid: ddde254164b1fcd41a0399be13b900b6, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
