@@ -44,6 +44,11 @@ public class Player_Movement : MonoBehaviour
         return this;
     }
 
+    public Vector2 getNormal()
+    {
+        return normal;
+    }
+
     public void UpdateGravity()
     {
         if (velY > c.MAX_FALL_SPEED)
@@ -191,7 +196,7 @@ public class Player_Movement : MonoBehaviour
         
         if (GetGrounded()) //if on ground, flat or sloped
         {
-            Debug.DrawRay(this.transform.position, slopeNormalPerp, Color.yellow);
+            Debug.DrawRay(this.transform.position, slopeNormalPerp, Color.cyan);
             rb.velocity = new Vector2(slopeNormalPerp.x * -velX, slopeNormalPerp.y * -velX);
         }
         else  //If in air
@@ -333,6 +338,19 @@ public class Player_Movement : MonoBehaviour
             velX = -1 * c.DASH_SPEED;
         }
 
+    }
+
+    public void Freeze()
+    {
+        velX = 0;
+        velY = 0;
+        Gravity(false);
+        UpdateMidair();
+    }
+
+    public void Gravity(bool g)
+    {
+        rb.gravityScale = g ? 1: 0;
     }
 
     /**

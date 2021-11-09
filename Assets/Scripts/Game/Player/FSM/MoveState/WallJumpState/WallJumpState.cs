@@ -15,6 +15,7 @@ public class WallJumpState : State
     {
         animator.handleMirroring(movement.GetWallCollisionType() == WallCollisionType.rightWall);
         animator.createWallJumpParticle();
+        animator.Jump(true);
         movement.WallJump(dash);
         movement.Jump();
         movement.SetStallJump(true);
