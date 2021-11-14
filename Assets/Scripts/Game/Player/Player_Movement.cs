@@ -344,8 +344,7 @@ public class Player_Movement : MonoBehaviour
     {
         velX = 0;
         velY = 0;
-        Gravity(false);
-        UpdateMidair();
+        rb.velocity = new Vector2(velX, velY);
     }
 
     public void Gravity(bool g)

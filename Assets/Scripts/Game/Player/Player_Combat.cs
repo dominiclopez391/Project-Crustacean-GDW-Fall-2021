@@ -10,38 +10,42 @@ using UnityEngine;
  * */
 public class Player_Combat : MonoBehaviour
 {
-    public const int PLAYER_MAX_HEALTH = 20;
-    int playerHealth = PLAYER_MAX_HEALTH;
-    const float GRACE_PERIOD = 3.0f;
+    public CharacterSettings settings;
+    Character c;
+    int playerHealth;
     public GameObject respawnLocation;
     public CharacterFSM fsm;
-    float tGraced = GRACE_PERIOD;
+    float tGraced;
 
     //variables for managing flashing effect
     public GameObject playerSprite;
-    const float FLASH_PERIOD = 0.1f;
-    float tFlash = 0.0f;
-    bool isFlashed = false;
+    float tFlash;
+    bool isFlashed;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        c = settings.GetSettingsFor();
+        Physics2D.IgnoreLayerCollision(c.ENEMY_LAYER, c.PLAYER_LAYER, true);
+        playerHealth = c.PLAYER_MAX_HEALTH;
+        tGraced = c.GRACE_PERIOD;
+        tFlash = 0.0f;
+        isFlashed = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         //Updates the grace period time, and flashing time
-        if (tGraced < GRACE_PERIOD && fsm.GetState<DamagedState>())
+        if (tGraced < c.GRACE_PERIOD && fsm.GetState<DamagedState>())
         {
             //effects during the grace period
             tGraced += Time.deltaTime;
-            if (tFlash < FLASH_PERIOD)
+            if (tFlash < c.FLASH_PERIOD)
                 tFlash += Time.deltaTime;
             else if (isFlashed)
             {
-                playerSprite.GetComponent<SpriteRenderer>().color = new Color(255,255,0);
+                playerSprite.GetComponent<SpriteRenderer>().color = new Color(255, 255, 0);
                 isFlashed = false;
                 tFlash = 0.0f;
             }
@@ -53,7 +57,10 @@ public class Player_Combat : MonoBehaviour
             }
         }
         //otherwise ensure player sprite is normal
-        else playerSprite.GetComponent<SpriteRenderer>().color = Color.white;
+        else
+        {
+            playerSprite.GetComponent<SpriteRenderer>().color = Color.white;
+        }
     }
 
     /*
@@ -62,7 +69,7 @@ public class Player_Combat : MonoBehaviour
      * */
     public void takeDamage(int damage)
     {
-        if (tGraced >= GRACE_PERIOD)
+        if (tGraced >= c.GRACE_PERIOD)
         {
             tGraced = 0;
             fsm.ChangeState<DamagedState>();
@@ -73,15 +80,18 @@ public class Player_Combat : MonoBehaviour
     }
 
     /*
-     * Kills the player: respawn, resets to WalkState
-     * and resets the grace timer
+     * Kills the player: respawn, resets to FallState
+     * and resets the grace timer, also ensures player is on default layer
      * */
     void killPlayer()
     {
         Debug.Log("MEMENTO MORI");
         respawnPlayer();
-        fsm.ChangeState<WalkState>();
-        tGraced = GRACE_PERIOD;
+
+        fsm.ChangeState<DamagedState>();
+        fsm.ChangeState<FallState>();
+
+        tGraced = c.GRACE_PERIOD;
     }
 
     /*
@@ -90,7 +100,7 @@ public class Player_Combat : MonoBehaviour
      * */
     void respawnPlayer()
     {
-        playerHealth = PLAYER_MAX_HEALTH;
+        playerHealth = c.PLAYER_MAX_HEALTH;
         this.transform.position = respawnLocation.transform.position;
     }
 }

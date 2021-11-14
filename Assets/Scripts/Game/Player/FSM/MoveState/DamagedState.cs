@@ -12,6 +12,7 @@ public class DamagedState : State
         tLock = 0.0f;
         animator.Damage(true);
         movement.Freeze();
+        movement.Gravity(false);
     }
 
     public override void Loop()

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class State : MonoBehaviour
 {
-
     protected CharacterFSM fsm;
     protected GameController c;
     protected Player_Animator animator;
