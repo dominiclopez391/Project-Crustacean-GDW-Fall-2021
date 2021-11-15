@@ -62,27 +62,15 @@ public class CharacterFSM : MonoBehaviour
 
     public void ChangeState<T>()
     {
-        Debug.Log("Changing state to: " + typeof(T).ToString());
+        //Debug.Log("Changing state to: " + typeof(T).ToString());
         if (curState != null)
         {
             curState.End();
         }
-
-        checkLanding<T>();
-
+        
         states[typeof(T)].Begin();
         curState = states[typeof(T)];
 
-    }
-
-    //special case, animator only play the landing particles if going from FallState or JumpState, to WalkState
-    //the FSM is the only place in the code that can know this scenario
-    private void checkLanding<T>()
-    {
-        if ((curState == states[typeof(FallState)] || curState == states[typeof(JumpState)]) && typeof(T) == typeof(WalkState))
-        {
-            animator.createLandingParticle(Vector2.Angle(movement.getNormal(), Vector2.up));
-        }
     }
 
     public T GetState<T>() where T : class

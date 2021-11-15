@@ -14,7 +14,7 @@ public abstract class MoveState : State
 
     public override void Loop()
     {
-        //todo: if c.jump switch to jumpstate
+        
     }
 
 

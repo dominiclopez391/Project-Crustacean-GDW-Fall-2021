@@ -8,6 +8,8 @@ public class CharacterSettingsAcro : CharacterSettings
     {
         Character c;
 
+        //define movement settings
+
         c.WALKING_ACCELERATION = 25f;
         c.GRAVITY_ACCELERATION = 9f;
         c.WALK_MAX_SPEED = 2.4f;
@@ -21,6 +23,15 @@ public class CharacterSettingsAcro : CharacterSettings
         c.WALL_JUMP_DURATION = 0.02f;
         c.DASH_SPEED = 6f;
         c.DASH_DURATION = 0.4f;
+
+        //define combat settings
+
+        c.PLAYER_MAX_HEALTH = 20;
+        c.GRACE_PERIOD = 5.0f;
+        c.PLAYER_LAYER = 3;
+        c.ENEMY_LAYER = 6;
+        c.FLASH_PERIOD = 0.1f;
+
         return c;
     }
 }

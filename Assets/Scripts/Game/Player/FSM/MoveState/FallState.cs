@@ -48,6 +48,8 @@ public class FallState : MoveState
         if(movement.GetGrounded()
             && tUngrounded + 0.1f < Time.time)
         {
+            //landing on ground
+            animator.createLandingParticle(Vector2.Angle(movement.getNormal(), Vector2.up));
             fsm.ChangeState<WalkState>();
             animator.Fall(false);
         }

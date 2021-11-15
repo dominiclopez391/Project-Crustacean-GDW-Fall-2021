@@ -47,12 +47,12 @@ public class DashState : MoveState
     public override void Loop()
     {
         base.Loop();
-        Debug.Log(directionLeft);
+        //Debug.Log(directionLeft);
 
         movement.Dash(directionLeft);
         movement.UpdateGravity();
         movement.Walk();
-        animator.createDashContinueParticle();
+        animator.createDashContinueParticle(Vector2.Angle(movement.getNormal(), Vector2.up));
         CheckFallOff();
 
     }

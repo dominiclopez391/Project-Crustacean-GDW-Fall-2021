@@ -515,7 +515,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1984
+        y: 1280
         width: 64
         height: 64
       alignment: 0
@@ -536,7 +536,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 1984
+        y: 1280
         width: 64
         height: 64
       alignment: 0
@@ -557,7 +557,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1920
+        y: 1216
         width: 64
         height: 64
       alignment: 0
@@ -578,7 +578,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 1920
+        y: 1216
         width: 64
         height: 64
       alignment: 0
@@ -599,7 +599,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 1920
+        y: 1216
         width: 64
         height: 64
       alignment: 0
@@ -620,7 +620,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 1920
+        y: 1216
         width: 64
         height: 64
       alignment: 0
@@ -641,7 +641,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1856
+        y: 1152
         width: 64
         height: 64
       alignment: 0
@@ -662,7 +662,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1792
+        y: 1088
         width: 64
         height: 64
       alignment: 0
@@ -683,7 +683,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 1792
+        y: 1088
         width: 64
         height: 64
       alignment: 0
@@ -704,7 +704,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 1792
+        y: 1088
         width: 64
         height: 64
       alignment: 0
@@ -725,7 +725,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1728
+        y: 1024
         width: 64
         height: 64
       alignment: 0
@@ -746,7 +746,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 1728
+        y: 1024
         width: 64
         height: 64
       alignment: 0
@@ -767,7 +767,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 1728
+        y: 1024
         width: 64
         height: 64
       alignment: 0
@@ -788,7 +788,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 1728
+        y: 1024
         width: 64
         height: 64
       alignment: 0
@@ -809,7 +809,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 1728
+        y: 1024
         width: 64
         height: 64
       alignment: 0
@@ -830,7 +830,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 1728
+        y: 1024
         width: 64
         height: 64
       alignment: 0
@@ -851,7 +851,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1664
+        y: 960
         width: 64
         height: 64
       alignment: 0
@@ -872,7 +872,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1600
+        y: 896
         width: 64
         height: 64
       alignment: 0
@@ -893,7 +893,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 1600
+        y: 896
         width: 64
         height: 64
       alignment: 0
@@ -914,7 +914,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1536
+        y: 832
         width: 64
         height: 64
       alignment: 0
@@ -935,7 +935,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 1536
+        y: 832
         width: 64
         height: 64
       alignment: 0
@@ -956,7 +956,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 1536
+        y: 832
         width: 64
         height: 64
       alignment: 0
@@ -977,7 +977,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 1536
+        y: 832
         width: 64
         height: 64
       alignment: 0
@@ -998,7 +998,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1472
+        y: 768
         width: 64
         height: 64
       alignment: 0
@@ -1019,7 +1019,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 1472
+        y: 768
         width: 64
         height: 64
       alignment: 0
@@ -1040,7 +1040,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 1472
+        y: 768
         width: 64
         height: 64
       alignment: 0
@@ -1061,7 +1061,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1408
+        y: 704
         width: 64
         height: 64
       alignment: 0
@@ -1082,7 +1082,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 1408
+        y: 704
         width: 64
         height: 64
       alignment: 0
@@ -1103,7 +1103,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 1408
+        y: 704
         width: 64
         height: 64
       alignment: 0
@@ -1124,7 +1124,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1344
+        y: 640
         width: 64
         height: 64
       alignment: 0
@@ -1144,8 +1144,8 @@ TextureImporter:
       name: acro_30
       rect:
         serializedVersion: 2
-        x: 64
-        y: 1344
+        x: 0
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -1166,7 +1166,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1280
+        y: 512
         width: 64
         height: 64
       alignment: 0
@@ -1187,7 +1187,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 1280
+        y: 512
         width: 64
         height: 64
       alignment: 0
@@ -1207,8 +1207,8 @@ TextureImporter:
       name: acro_33
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1216
+        x: 128
+        y: 512
         width: 64
         height: 64
       alignment: 0
@@ -1228,8 +1228,8 @@ TextureImporter:
       name: acro_34
       rect:
         serializedVersion: 2
-        x: 64
-        y: 1216
+        x: 192
+        y: 512
         width: 64
         height: 64
       alignment: 0
@@ -1249,8 +1249,8 @@ TextureImporter:
       name: acro_35
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1216
+        x: 256
+        y: 512
         width: 64
         height: 64
       alignment: 0
@@ -1271,7 +1271,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1152
+        y: 448
         width: 64
         height: 64
       alignment: 0
@@ -1292,7 +1292,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 1152
+        y: 448
         width: 64
         height: 64
       alignment: 0
@@ -1312,8 +1312,8 @@ TextureImporter:
       name: acro_38
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1152
+        x: 0
+        y: 384
         width: 64
         height: 64
       alignment: 0
@@ -1333,8 +1333,8 @@ TextureImporter:
       name: acro_39
       rect:
         serializedVersion: 2
-        x: 192
-        y: 1152
+        x: 64
+        y: 384
         width: 64
         height: 64
       alignment: 0
@@ -1354,8 +1354,8 @@ TextureImporter:
       name: acro_40
       rect:
         serializedVersion: 2
-        x: 256
-        y: 1152
+        x: 128
+        y: 384
         width: 64
         height: 64
       alignment: 0
@@ -1375,8 +1375,8 @@ TextureImporter:
       name: acro_41
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1088
+        x: 192
+        y: 384
         width: 64
         height: 64
       alignment: 0
@@ -1396,8 +1396,8 @@ TextureImporter:
       name: acro_42
       rect:
         serializedVersion: 2
-        x: 64
-        y: 1088
+        x: 256
+        y: 384
         width: 64
         height: 64
       alignment: 0
@@ -1417,8 +1417,8 @@ TextureImporter:
       name: acro_43
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1088
+        x: 320
+        y: 384
         width: 64
         height: 64
       alignment: 0
@@ -1438,8 +1438,8 @@ TextureImporter:
       name: acro_44
       rect:
         serializedVersion: 2
-        x: 192
-        y: 1088
+        x: 384
+        y: 384
         width: 64
         height: 64
       alignment: 0
@@ -1459,8 +1459,8 @@ TextureImporter:
       name: acro_45
       rect:
         serializedVersion: 2
-        x: 256
-        y: 1088
+        x: 0
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -1480,8 +1480,8 @@ TextureImporter:
       name: acro_46
       rect:
         serializedVersion: 2
-        x: 320
-        y: 1088
+        x: 64
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -1501,8 +1501,8 @@ TextureImporter:
       name: acro_47
       rect:
         serializedVersion: 2
-        x: 384
-        y: 1088
+        x: 128
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -1522,8 +1522,8 @@ TextureImporter:
       name: acro_48
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1024
+        x: 192
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -1543,8 +1543,8 @@ TextureImporter:
       name: acro_49
       rect:
         serializedVersion: 2
-        x: 64
-        y: 1024
+        x: 256
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -1564,8 +1564,8 @@ TextureImporter:
       name: acro_50
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1024
+        x: 320
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -1585,8 +1585,8 @@ TextureImporter:
       name: acro_51
       rect:
         serializedVersion: 2
-        x: 192
-        y: 1024
+        x: 0
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -1606,8 +1606,8 @@ TextureImporter:
       name: acro_52
       rect:
         serializedVersion: 2
-        x: 256
-        y: 1024
+        x: 64
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -1627,8 +1627,8 @@ TextureImporter:
       name: acro_53
       rect:
         serializedVersion: 2
-        x: 320
-        y: 1024
+        x: 128
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -1648,8 +1648,8 @@ TextureImporter:
       name: acro_54
       rect:
         serializedVersion: 2
-        x: 0
-        y: 960
+        x: 192
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -1669,8 +1669,8 @@ TextureImporter:
       name: acro_55
       rect:
         serializedVersion: 2
-        x: 64
-        y: 960
+        x: 256
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -1690,8 +1690,8 @@ TextureImporter:
       name: acro_56
       rect:
         serializedVersion: 2
-        x: 128
-        y: 960
+        x: 320
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -1711,8 +1711,8 @@ TextureImporter:
       name: acro_57
       rect:
         serializedVersion: 2
-        x: 192
-        y: 960
+        x: 384
+        y: 256
         width: 64
         height: 64
       alignment: 0
@@ -1732,8 +1732,8 @@ TextureImporter:
       name: acro_58
       rect:
         serializedVersion: 2
-        x: 256
-        y: 960
+        x: 0
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -1753,8 +1753,8 @@ TextureImporter:
       name: acro_59
       rect:
         serializedVersion: 2
-        x: 320
-        y: 960
+        x: 64
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -1774,8 +1774,8 @@ TextureImporter:
       name: acro_60
       rect:
         serializedVersion: 2
-        x: 384
-        y: 960
+        x: 128
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -1795,8 +1795,8 @@ TextureImporter:
       name: acro_61
       rect:
         serializedVersion: 2
-        x: 448
-        y: 960
+        x: 192
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -1816,8 +1816,8 @@ TextureImporter:
       name: acro_62
       rect:
         serializedVersion: 2
-        x: 0
-        y: 896
+        x: 256
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -1837,8 +1837,8 @@ TextureImporter:
       name: acro_63
       rect:
         serializedVersion: 2
-        x: 64
-        y: 896
+        x: 320
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -1858,8 +1858,8 @@ TextureImporter:
       name: acro_64
       rect:
         serializedVersion: 2
-        x: 128
-        y: 896
+        x: 384
+        y: 192
         width: 64
         height: 64
       alignment: 0
@@ -1879,8 +1879,8 @@ TextureImporter:
       name: acro_65
       rect:
         serializedVersion: 2
-        x: 192
-        y: 896
+        x: 0
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -1900,8 +1900,8 @@ TextureImporter:
       name: acro_66
       rect:
         serializedVersion: 2
-        x: 256
-        y: 896
+        x: 64
+        y: 128
         width: 64
         height: 64
       alignment: 0
@@ -1921,8 +1921,8 @@ TextureImporter:
       name: acro_67
       rect:
         serializedVersion: 2
-        x: 320
-        y: 896
+        x: 0
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -1942,8 +1942,8 @@ TextureImporter:
       name: acro_68
       rect:
         serializedVersion: 2
-        x: 384
-        y: 896
+        x: 64
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -1963,8 +1963,8 @@ TextureImporter:
       name: acro_69
       rect:
         serializedVersion: 2
-        x: 0
-        y: 832
+        x: 128
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -1984,8 +1984,8 @@ TextureImporter:
       name: acro_70
       rect:
         serializedVersion: 2
-        x: 64
-        y: 832
+        x: 192
+        y: 64
         width: 64
         height: 64
       alignment: 0
@@ -2005,8 +2005,8 @@ TextureImporter:
       name: acro_71
       rect:
         serializedVersion: 2
-        x: 128
-        y: 832
+        x: 0
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -2026,8 +2026,8 @@ TextureImporter:
       name: acro_72
       rect:
         serializedVersion: 2
-        x: 192
-        y: 832
+        x: 64
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -2047,8 +2047,8 @@ TextureImporter:
       name: acro_73
       rect:
         serializedVersion: 2
-        x: 256
-        y: 832
+        x: 128
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -2068,8 +2068,8 @@ TextureImporter:
       name: acro_74
       rect:
         serializedVersion: 2
-        x: 320
-        y: 832
+        x: 192
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -2089,8 +2089,8 @@ TextureImporter:
       name: acro_75
       rect:
         serializedVersion: 2
-        x: 384
-        y: 832
+        x: 256
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -2110,8 +2110,8 @@ TextureImporter:
       name: acro_76
       rect:
         serializedVersion: 2
-        x: 0
-        y: 768
+        x: 320
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -2123,1287 +2123,6 @@ TextureImporter:
       bones: []
       spriteID: 41f5a0a87b220d600800000000000000
       internalID: 490930531073679124
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_77
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 768
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 91adf51e2e2343920800000000000000
-      internalID: 2969054004369152537
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_78
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 768
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6b318c9e242868050800000000000000
-      internalID: 5802468393815118774
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_79
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 768
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 36348f6fe0b25d5f0800000000000000
-      internalID: -732632021104835741
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_80
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 768
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0f36d13a0a3f1d7a0800000000000000
-      internalID: -6354029727986129936
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_81
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 768
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d9ad787aa852565c0800000000000000
-      internalID: -4222927798143559011
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_82
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 768
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4a788deb6ba21c710800000000000000
-      internalID: 1711696297751775140
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_83
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 768
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 592080b9f197b9420800000000000000
-      internalID: 2637835183407497877
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_84
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 704
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2f9a9dd065910fc60800000000000000
-      internalID: 7849802007897025010
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_85
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 704
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fa7e615e005d7f660800000000000000
-      internalID: 7419633110936381359
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_86
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 640
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: abac51962ab0fc670800000000000000
-      internalID: 8561074208830245562
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_87
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 640
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a1ad5a9ee51c9a390800000000000000
-      internalID: -7806495865678996966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_88
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 640
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 157eea07a110552b0800000000000000
-      internalID: -5596565748866685103
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_89
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 640
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 19f8d4358f85a1f50800000000000000
-      internalID: 6852887606570356625
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_90
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 640
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0adb81c11d4072b20800000000000000
-      internalID: 3109459363888676256
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_91
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 640
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 09b68170f2578e610800000000000000
-      internalID: 1650698108274240400
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_92
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 576
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a3163522d1ca6f10800000000000000
-      internalID: 2263834871018689448
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_93
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 576
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dc7e2b315064cbc90800000000000000
-      internalID: -7152765120551917619
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_94
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 576
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 14a8c730f496e53a0800000000000000
-      internalID: -6674781809634670015
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_95
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 576
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d88447b37afc49fd0800000000000000
-      internalID: -2336013989534480243
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_96
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 576
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4c62d930083d6df50800000000000000
-      internalID: 6905939625389139652
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_97
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 576
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 23ae4e40120ad35c0800000000000000
-      internalID: -4234052010981922254
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_98
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 576
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a8ccefe0c4df2d430800000000000000
-      internalID: 3806383138192411786
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_99
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 576
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3f65226213129c2a0800000000000000
-      internalID: -6716800874269485325
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_100
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 576
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 58bec74e6cff870d0800000000000000
-      internalID: -3424706286913262715
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_101
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 576
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e51a82c72a2f54470800000000000000
-      internalID: 8378369461474337118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_102
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 576
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3b20e8cb3a0cd9410800000000000000
-      internalID: 1485555261577757363
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_103
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 576
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a66090bc3f82fa940800000000000000
-      internalID: 5309507513241634410
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_104
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 512
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 280c91083f2100450800000000000000
-      internalID: 6052858736221470850
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_105
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 512
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 11995e8acb2558800800000000000000
-      internalID: 613987894446889233
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_106
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 512
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1242162e036a6deb0800000000000000
-      internalID: -4695382832600505311
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_107
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 512
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 76130532a9b27d470800000000000000
-      internalID: 8419245969409847655
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_108
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 512
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 780ef0480bae334d0800000000000000
-      internalID: -3155920870005809017
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_109
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 512
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c7fb2fd7592ee5e10800000000000000
-      internalID: 2188435600639704956
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_110
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 512
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b001d9f8998cc19a0800000000000000
-      internalID: -6260908820086845429
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_111
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 512
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 993d27234efa6a630800000000000000
-      internalID: 3938028318815867801
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_112
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 512
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bdeeac7cdd3bf8f80800000000000000
-      internalID: -8102059439495123237
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_113
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 512
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c01d39c70c32ea60800000000000000
-      internalID: 7701784316895629505
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_114
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 512
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9c0a17ae8f527ce00800000000000000
-      internalID: 1064861587911844041
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_115
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 512
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6e37949d9b028efd0800000000000000
-      internalID: -2312562426068241434
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_116
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 448
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e2891fce3e4d0b520800000000000000
-      internalID: 2715904650702329902
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_117
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 448
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61096262bad9a0f90800000000000000
-      internalID: -6986598513506873322
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_118
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 448
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f70f968f6b8ca9a80800000000000000
-      internalID: -8459228261884759937
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_119
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 384
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8356f91338ccacdf0800000000000000
-      internalID: -159089972972919496
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_120
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 384
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d219a766ccaf43bc0800000000000000
-      internalID: -3804140029421645523
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_121
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 384
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9c2f03fdce7a32390800000000000000
-      internalID: -7844241490150624567
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_122
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 384
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b7309ed0c35ff3640800000000000000
-      internalID: 5062034144467944315
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_123
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 384
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8fe6b55ada7db5f10800000000000000
-      internalID: 2259636778859982584
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_124
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 384
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 663061fd88e329890800000000000000
-      internalID: -7452825675765513370
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_125
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 320
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8d57452bb49fddb60800000000000000
-      internalID: 7772642635421087192
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_126
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 071430d61bf5491c0800000000000000
-      internalID: -4497864912193502864
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_127
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dde7b2a3da3bcb170800000000000000
-      internalID: 8195622978494103261
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_128
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 214b8a7dcf68c40e0800000000000000
-      internalID: -2284302490475645934
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_129
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f62c3c44cacbe4ce0800000000000000
-      internalID: -1418989384501050769
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_130
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c3423d6cf7136bca0800000000000000
-      internalID: -6001555028558273476
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_131
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ddaf0e663ffcbe240800000000000000
-      internalID: 4822176470340270813
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_132
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a78758650f7449510800000000000000
-      internalID: 1554946868918974586
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_133
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c04f56e5d102e1060800000000000000
-      internalID: 6926008587452281868
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_134
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fbb0a5b2b8b9d8ab0800000000000000
-      internalID: -5004172588908672065
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_135
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0abde5ac558440790800000000000000
-      internalID: -7564841940770956384
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_136
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 470c84640f2c872b0800000000000000
-      internalID: -5586501000525987724
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: acro_137
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 921e3e1a2b1ea71e0800000000000000
-      internalID: -2199197310680571607
       vertices: []
       indices: 
       edges: []

@@ -11,8 +11,8 @@ public class Player_Animator : MonoBehaviour
     GameObject jumpPrefab, landPrefab, wallClingPrefab, wallJumpPrefab, dashStartPrefab, dashContinuePrefab;
     GameObject player;
     private const float PARTICLE_SYSTEM_DEPSPAWN_TIMER = 3.0f;
-    private const float landingOffsetX = 0.2f, landingOffsetY = 0.046875f, fastFallOffset = -0.5f, jumpOffsetX = 0.1f, jumpOffsetY = -0.1f, 
-        wallClingOffsetX = 0.05f, wallClingOffsetY = 0.1f, wallJumpOffset = 0.2f, dashStartOffsetX = 0.2f, dashStartOffsetY = 0.1f, dashContinueOffsetY = 0.12f;
+    private const float landingOffsetX = 0.2f, landingOffsetY = 0.046875f, fastFallOffset = -0.1f, jumpOffsetX = 0.1f, jumpOffsetY = -0.1f, 
+        wallClingOffsetX = 0.05f, wallClingOffsetY = 0.2f, wallJumpOffset = 0.1f, dashStartOffsetX = 0.2f, dashStartOffsetY = 0.0937f, dashContinueOffsetY = 0.03f;
     private float tWallClingAnim = 0f, wallClingLoopTime = 0.1f; //time for repeating the wall clinging animation
     private float tDashContAnim = 0f, dashContLoopTime = 0.01f; // time for repeating the dash continuing animation
 
@@ -130,9 +130,9 @@ public class Player_Animator : MonoBehaviour
         Vector2 dashStartPos;
         if (this.transform.localScale.x < 0.0f)
         {
-            dashStartPos = new Vector2(player.transform.position.x - dashStartOffsetX, player.transform.position.y); //effect to the left
+            dashStartPos = new Vector2(player.transform.position.x - dashStartOffsetX, player.transform.position.y + dashStartOffsetY); //effect to the left
         }
-        else dashStartPos = new Vector2(player.transform.position.x + dashStartOffsetX, player.transform.position.y); //effect to the right
+        else dashStartPos = new Vector2(player.transform.position.x + dashStartOffsetX, player.transform.position.y + dashStartOffsetY); //effect to the right
         GameObject dashStartSpot = Instantiate(dashStartPrefab, dashStartPos, Quaternion.Euler(0, 0, 0));
         if (this.transform.localScale.x < 0.0f)
         {
@@ -142,7 +142,7 @@ public class Player_Animator : MonoBehaviour
         Destroy(dashStartSpot, PARTICLE_SYSTEM_DEPSPAWN_TIMER); // cleans up spriteless object after animation
     }
 
-    public void createDashContinueParticle()
+    public void createDashContinueParticle(float slopeDegrees)
     {
         //Creates wall particle animations opposite the faced direction
         //This gives a visual effect of wall interaction behind the player
@@ -152,8 +152,11 @@ public class Player_Animator : MonoBehaviour
             tDashContAnim = 0;
         }
         else return;
-        Vector2 dashContPos = new Vector2(player.transform.position.x, player.transform.position.y - dashContinueOffsetY); //effect on player
+        Vector2 dashContPos = Quaternion.Euler(0, 0, slopeDegrees) * 
+            (new Vector3(player.transform.position.x, player.transform.position.y - dashContinueOffsetY, 0) - player.transform.position) + player.transform.position;//effect on player
         GameObject dashContSpot = Instantiate(dashContinuePrefab, dashContPos, Quaternion.Euler(0, 0, 0));
+        ParticleSystem.MainModule psMain = dashContSpot.GetComponent<ParticleSystem>().main;
+        psMain.startRotation = -Mathf.Deg2Rad * slopeDegrees;
 
         Destroy(dashContSpot, PARTICLE_SYSTEM_DEPSPAWN_TIMER); // cleans up spriteless object after animation
     }
