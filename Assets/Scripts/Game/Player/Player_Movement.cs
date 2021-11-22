@@ -25,7 +25,7 @@ public class Player_Movement : MonoBehaviour
     private bool accel = true;
     private bool hitHead = false;
     private bool stall = false;
-
+    private bool dash = false;
     private bool wallCling = false;
     //movement friction references
     private PhysicsMaterial2D fullFriction, noFriction;
@@ -149,7 +149,17 @@ public class Player_Movement : MonoBehaviour
         
         if (vel == 0)
         {
-            velX = 0;
+
+            if (velX > 0.02f)
+            {
+                velX -= c.WALKING_ACCELERATION * Time.deltaTime;
+                if (velX < 0) vel = 0;
+            } 
+            else if (velX < -0.02f)
+            {
+                velX += c.WALKING_ACCELERATION * Time.deltaTime;
+                if (velX > 0) vel = 0;
+            }
 
         }
 
@@ -157,7 +167,7 @@ public class Player_Movement : MonoBehaviour
         {
             if (velX < 0) velX = 0; //stop on a dime when turning
 
-            if (velX < c.WALK_MAX_SPEED)
+            if (velX < (dash ? c.DASH_SPEED : c.WALK_MAX_SPEED))
             {
                 velX += vel * c.WALKING_ACCELERATION * Time.deltaTime;
             }
@@ -166,7 +176,7 @@ public class Player_Movement : MonoBehaviour
         {
             if (velX > 0) velX = 0;
 
-            if (velX > -1 * c.WALK_MAX_SPEED)
+            if (velX > -1 * (dash ? c.DASH_SPEED : c.WALK_MAX_SPEED))
             {
                 velX += vel * c.WALKING_ACCELERATION * Time.deltaTime;
             }
@@ -212,7 +222,7 @@ public class Player_Movement : MonoBehaviour
     public void WallJump(bool dash)
     {
         float speed = dash ? c.DASH_SPEED : c.WALK_MAX_SPEED;
-
+        this.dash = dash;
         velX = (GetWallCollisionType() == WallCollisionType.leftWall ? speed : -1 * speed);
     }
 
@@ -316,6 +326,7 @@ public class Player_Movement : MonoBehaviour
     {
         if (Time.time > dashTime + c.DASH_DURATION)
         {
+
             return true;
         }
         return false;
@@ -328,7 +339,7 @@ public class Player_Movement : MonoBehaviour
 
     public void Dash(bool left)
     {
-
+        dash = true;
         if (!left)
         {
             velX = c.DASH_SPEED;
@@ -338,6 +349,11 @@ public class Player_Movement : MonoBehaviour
             velX = -1 * c.DASH_SPEED;
         }
 
+    }
+
+    public void StopDash()
+    {
+        dash = false;
     }
 
     public void Freeze()

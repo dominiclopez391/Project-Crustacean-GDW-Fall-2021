@@ -10,8 +10,7 @@ public class FallState : MoveState
     bool hasFastFallen;
     public override void Begin()
     {
-        if (!dash)
-            c.horizontal += movement.UpdateFall;
+        c.horizontal += movement.UpdateFall;
 
         c.jumpRelease += Stall;
         c.jump += Jump;
@@ -120,14 +119,14 @@ public class FallState : MoveState
     public override void End()
     {
         fallSlow = false;
-        if (!dash)
-            c.horizontal -= movement.UpdateFall;
+        c.horizontal -= movement.UpdateFall;
         c.horizontal -= CheckWallCling;
         c.horizontal -= movement.UpdateWalk;
         c.jumpRelease -= Stall;
         c.vertical -= FastFall;
         c.jump -= Jump;
         dash = false;
+        movement.StopDash();
         base.End();
     }
 
